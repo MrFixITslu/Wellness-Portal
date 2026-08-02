@@ -92,7 +92,7 @@ export default function ModeratorPanel({ user }: ModeratorProps) {
       
       {/* Header */}
       <div className="space-y-1">
-        <h1 id="mod-title" className="text-xl font-semibold tracking-tight text-[#0F4C81]">Clinical Moderation Console</h1>
+        <h1 id="mod-title" className="text-xl font-semibold tracking-tight text-[#163A2E]">Clinical Moderation Console</h1>
         <p id="mod-desc" className="text-slate-500 text-xs">
           Maintain regional support health, resolve reported content, audit system events, and track AI-intercepted crisis risks.
         </p>
@@ -110,7 +110,7 @@ export default function ModeratorPanel({ user }: ModeratorProps) {
           onClick={() => setActiveSubTab("reports")}
           className={`px-4 py-2.5 text-xs font-semibold border-b-2 transition-all flex items-center gap-1.5 ${
             activeSubTab === "reports"
-              ? "border-[#00A896] text-[#00A896]"
+              ? "border-[#158A80] text-[#158A80]"
               : "border-transparent text-slate-500 hover:text-slate-800"
           }`}
         >
@@ -121,7 +121,7 @@ export default function ModeratorPanel({ user }: ModeratorProps) {
           onClick={() => setActiveSubTab("safety")}
           className={`px-4 py-2.5 text-xs font-semibold border-b-2 transition-all flex items-center gap-1.5 ${
             activeSubTab === "safety"
-              ? "border-[#00A896] text-[#00A896]"
+              ? "border-[#158A80] text-[#158A80]"
               : "border-transparent text-slate-500 hover:text-slate-800"
           }`}
         >
@@ -132,7 +132,7 @@ export default function ModeratorPanel({ user }: ModeratorProps) {
           onClick={() => setActiveSubTab("audits")}
           className={`px-4 py-2.5 text-xs font-semibold border-b-2 transition-all flex items-center gap-1.5 ${
             activeSubTab === "audits"
-              ? "border-[#00A896] text-[#00A896]"
+              ? "border-[#158A80] text-[#158A80]"
               : "border-transparent text-slate-500 hover:text-slate-800"
           }`}
         >
@@ -141,7 +141,7 @@ export default function ModeratorPanel({ user }: ModeratorProps) {
       </div>
 
       {/* Main Workspace based on Active Sub-Tab */}
-      <div className="bg-white border border-[#EBE3D5] rounded-2xl p-6 shadow-sm">
+      <div className="bg-white border border-[#E3D8BF] rounded-2xl p-6 shadow-sm">
         
         {/* VIEW 1: USER REPORTS */}
         {activeSubTab === "reports" && (
@@ -262,7 +262,7 @@ export default function ModeratorPanel({ user }: ModeratorProps) {
         {activeSubTab === "audits" && (
           <div className="space-y-4">
             <h3 className="text-sm font-semibold text-slate-800 flex items-center gap-2">
-              <ClipboardList className="w-5 h-5 text-[#00A896]" /> HIPAA System Compliance Trails
+              <ClipboardList className="w-5 h-5 text-[#158A80]" /> HIPAA System Compliance Trails
             </h3>
             <p className="text-xs text-slate-500">
               To guarantee zero leakages, this immutable log records all account registrations, counseling registrations, reporting files, and clinical access requests with IP masking.

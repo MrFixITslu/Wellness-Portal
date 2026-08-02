@@ -58,14 +58,14 @@ export default function ResourceLibrary() {
       
       {/* Header */}
       <div className="space-y-1">
-        <h1 id="resources-title" className="text-xl font-semibold tracking-tight text-[#0F4C81]">Caribbean Wellness Library</h1>
+        <h1 id="resources-title" className="text-xl font-semibold tracking-tight text-[#163A2E]">Caribbean Wellness Library</h1>
         <p id="resources-desc" className="text-slate-500 text-xs">
           Empowering articles and mindful reflections curated specifically for Caribbean professionals, parents, and youth.
         </p>
       </div>
 
       {/* Controls: Category tags + Search bar */}
-      <div id="resources-controls" className="bg-white border border-[#EBE3D5] rounded-2xl p-4 flex flex-col md:flex-row justify-between items-stretch md:items-center gap-4 shadow-sm">
+      <div id="resources-controls" className="bg-white border border-[#E3D8BF] rounded-2xl p-4 flex flex-col md:flex-row justify-between items-stretch md:items-center gap-4 shadow-sm">
         
         {/* Search */}
         <div className="relative flex-1 max-w-md">
@@ -76,7 +76,7 @@ export default function ResourceLibrary() {
             placeholder="Search wellness articles..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-10 pr-4 py-2 bg-slate-50 border border-[#EBE3D5] rounded-xl text-slate-800 placeholder-slate-400 focus:outline-none text-xs"
+            className="w-full pl-10 pr-4 py-2 bg-slate-50 border border-[#E3D8BF] rounded-xl text-slate-800 placeholder-slate-400 focus:outline-none text-xs"
           />
         </div>
 
@@ -87,7 +87,7 @@ export default function ResourceLibrary() {
             id="select-category-filter"
             value={selectedCategory}
             onChange={(e) => setSelectedCategory(e.target.value)}
-            className="px-3 py-2 bg-slate-50 border border-[#EBE3D5] rounded-xl text-slate-700 text-xs focus:outline-none focus:ring-1 focus:ring-[#00A896]"
+            className="px-3 py-2 bg-slate-50 border border-[#E3D8BF] rounded-xl text-slate-700 text-xs focus:outline-none focus:ring-1 focus:ring-[#158A80]"
           >
             <option value="all">All Categories</option>
             {categories.map((cat) => (
@@ -102,7 +102,7 @@ export default function ResourceLibrary() {
       {/* Main Grid: Articles feed */}
       <div id="articles-grid" className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {filteredResources.length === 0 ? (
-          <div className="md:col-span-2 bg-white border border-[#EBE3D5] p-8 text-center text-slate-400 text-xs italic rounded-2xl">
+          <div className="md:col-span-2 bg-white border border-[#E3D8BF] p-8 text-center text-slate-400 text-xs italic rounded-2xl">
             No articles found matching your parameters. Try another keyword.
           </div>
         ) : (
@@ -114,11 +114,11 @@ export default function ResourceLibrary() {
               <div
                 key={article.id}
                 onClick={() => setActiveArticle(article)}
-                className="bg-white border border-[#EBE3D5] rounded-2xl p-5 hover:border-[#00A896]/50 transition-all cursor-pointer flex flex-col justify-between shadow-sm space-y-4"
+                className="bg-white border border-[#E3D8BF] rounded-2xl p-5 hover:border-[#158A80]/50 transition-all cursor-pointer flex flex-col justify-between shadow-sm space-y-4"
               >
                 <div className="space-y-2">
                   <div className="flex justify-between items-center text-[10px] font-bold tracking-wider uppercase">
-                    <span className="text-[#00A896] bg-teal-50 px-2 py-0.5 rounded-full">{catName}</span>
+                    <span className="text-[#158A80] bg-teal-50 px-2 py-0.5 rounded-full">{catName}</span>
                     <button
                       onClick={(e) => handleToggleBookmark(article.id, e)}
                       className={`p-1 rounded hover:bg-slate-50 transition-colors ${
@@ -130,7 +130,7 @@ export default function ResourceLibrary() {
                     </button>
                   </div>
 
-                  <h3 className="font-semibold text-slate-800 text-sm hover:text-[#0F4C81] line-clamp-1">{article.title}</h3>
+                  <h3 className="font-semibold text-slate-800 text-sm hover:text-[#163A2E] line-clamp-1">{article.title}</h3>
                   <p className="text-xs text-slate-500 line-clamp-2 leading-relaxed">{article.excerpt}</p>
                 </div>
 
@@ -138,7 +138,7 @@ export default function ResourceLibrary() {
                   <span className="flex items-center gap-1">
                     <Clock className="w-3.5 h-3.5" /> {article.read_time_mins} min read
                   </span>
-                  <span className="text-[#0F4C81] font-semibold flex items-center gap-0.5 hover:underline">
+                  <span className="text-[#163A2E] font-semibold flex items-center gap-0.5 hover:underline">
                     Read article <ChevronRight className="w-3.5 h-3.5" />
                   </span>
                 </div>
@@ -151,11 +151,11 @@ export default function ResourceLibrary() {
       {/* Reader Modal Overlay */}
       {activeArticle && (
         <div id="article-reader-modal" className="fixed inset-0 bg-slate-900/40 backdrop-blur-sm flex items-center justify-center p-4 z-50">
-          <div className="w-full max-w-2xl bg-[#FBF8F3] border border-[#EBE3D5] rounded-2xl shadow-lg flex flex-col max-h-[90vh] overflow-hidden">
+          <div className="w-full max-w-2xl bg-[#FAF6EA] border border-[#E3D8BF] rounded-2xl shadow-lg flex flex-col max-h-[90vh] overflow-hidden">
             
             {/* Modal Header */}
             <div className="p-4 bg-white border-b border-slate-100 flex items-center justify-between">
-              <span className="text-[10px] font-bold text-[#00A896] tracking-wider uppercase bg-teal-50 px-2 py-0.5 rounded-full">
+              <span className="text-[10px] font-bold text-[#158A80] tracking-wider uppercase bg-teal-50 px-2 py-0.5 rounded-full">
                 {categories.find((c) => c.id === activeArticle.category_id)?.name || "Wellness"}
               </span>
 

@@ -201,23 +201,23 @@ export default function Messaging({ user, initialTargetUserId }: MessagingProps)
       
       {/* Header */}
       <div className="space-y-1">
-        <h1 id="messages-title" className="text-xl font-semibold tracking-tight text-[#0F4C81]">Peer Messaging Vault</h1>
+        <h1 id="messages-title" className="text-xl font-semibold tracking-tight text-[#163A2E]">Peer Messaging Vault</h1>
         <p id="messages-desc" className="text-slate-500 text-xs flex items-center gap-1.5">
           <ShieldCheck className="w-4 h-4 text-emerald-600" /> Secure peer-to-peer chats. Messages are encrypted via AES-256 and only decrypted inside your active web session.
         </p>
       </div>
 
-      <div id="messages-layout" className="grid grid-cols-1 md:grid-cols-12 bg-white border border-[#EBE3D5] rounded-2xl shadow-sm overflow-hidden h-[500px]">
+      <div id="messages-layout" className="grid grid-cols-1 md:grid-cols-12 bg-white border border-[#E3D8BF] rounded-2xl shadow-sm overflow-hidden h-[500px]">
         
         {/* Left Col: Threads list */}
         <div className="md:col-span-4 border-r border-slate-100 flex flex-col h-full bg-slate-50/50">
           <div className="p-4 border-b border-slate-100 bg-white flex justify-between items-center">
             <h3 className="text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center gap-1.5">
-              <MessageSquare className="w-4 h-4 text-[#00A896]" /> Private Threads
+              <MessageSquare className="w-4 h-4 text-[#158A80]" /> Private Threads
             </h3>
             <button
               onClick={fetchConversations}
-              className="p-1 text-slate-400 hover:text-[#0F4C81] transition-colors"
+              className="p-1 text-slate-400 hover:text-[#163A2E] transition-colors"
               title="Refresh threads"
             >
               <RefreshCw className="w-3.5 h-3.5" />
@@ -239,12 +239,12 @@ export default function Messaging({ user, initialTargetUserId }: MessagingProps)
                     onClick={() => setActiveConv(conv)}
                     className={`w-full text-left p-3 rounded-xl transition-all border ${
                       isActive
-                        ? "bg-[#0F4C81] text-white border-transparent shadow-sm"
+                        ? "bg-[#163A2E] text-white border-transparent shadow-sm"
                         : "bg-white hover:bg-slate-50 border-slate-100"
                     }`}
                   >
                     <div className="flex justify-between items-center text-[10px]">
-                      <span className={`font-semibold ${isActive ? "text-white" : "text-[#0F4C81]"}`}>
+                      <span className={`font-semibold ${isActive ? "text-white" : "text-[#163A2E]"}`}>
                         @{conv.other_user.anonymous_username}
                       </span>
                       <span className={isActive ? "text-slate-200" : "text-slate-400"}>
@@ -294,7 +294,7 @@ export default function Messaging({ user, initialTargetUserId }: MessagingProps)
               </div>
 
               {/* Chat bubbles */}
-              <div className="flex-1 overflow-y-auto p-4 space-y-3 bg-[#FCFAF7]/30">
+              <div className="flex-1 overflow-y-auto p-4 space-y-3 bg-[#FDFBF3]/30">
                 {messages.map((m) => {
                   const isMine = m.sender_id === user.id;
                   const isVoice = m.content.startsWith('{"isVoiceNote":true');
@@ -309,8 +309,8 @@ export default function Messaging({ user, initialTargetUserId }: MessagingProps)
                         <div
                           className={`p-3 rounded-2xl text-xs leading-relaxed ${
                             isMine
-                              ? "bg-[#0F4C81] text-white rounded-tr-none"
-                              : "bg-[#FBF8F3] text-slate-800 border border-[#EBE3D5] rounded-tl-none"
+                              ? "bg-[#163A2E] text-white rounded-tr-none"
+                              : "bg-[#FAF6EA] text-slate-800 border border-[#E3D8BF] rounded-tl-none"
                           }`}
                         >
                           {m.content}
@@ -343,7 +343,7 @@ export default function Messaging({ user, initialTargetUserId }: MessagingProps)
                   className={`p-2.5 rounded-xl border transition-all flex items-center justify-center ${
                     showVoice 
                       ? "bg-red-500 hover:bg-red-600 text-white border-transparent shadow-sm" 
-                      : "bg-[#FBF8F3] hover:bg-slate-50 text-slate-500 border-[#EBE3D5] hover:text-[#0F4C81]"
+                      : "bg-[#FAF6EA] hover:bg-slate-50 text-slate-500 border-[#E3D8BF] hover:text-[#163A2E]"
                   }`}
                   title="Toggle voice note recorder"
                 >
@@ -356,12 +356,12 @@ export default function Messaging({ user, initialTargetUserId }: MessagingProps)
                   value={newMessage}
                   disabled={showVoice}
                   onChange={(e) => setNewMessage(e.target.value)}
-                  className="flex-1 px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#00A896]/20 text-xs disabled:opacity-50"
+                  className="flex-1 px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#158A80]/20 text-xs disabled:opacity-50"
                 />
                 <button
                   type="submit"
                   disabled={showVoice || !newMessage.trim()}
-                  className="p-2.5 bg-[#0F4C81] hover:bg-[#1D70B8] text-white rounded-xl transition-colors flex items-center justify-center disabled:opacity-40"
+                  className="p-2.5 bg-[#163A2E] hover:bg-[#1FA396] text-white rounded-xl transition-colors flex items-center justify-center disabled:opacity-40"
                 >
                   <Send className="w-4 h-4" />
                 </button>

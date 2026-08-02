@@ -65,11 +65,11 @@ export default function SafetyCenter() {
   const getPhaseInstruction = () => {
     switch (breathingPhase) {
       case "inhale":
-        return { text: "Inhale slowly", detail: "Inhale fresh ocean air... fill your chest.", color: "text-[#0F4C81]", scale: "scale-125" };
+        return { text: "Inhale slowly", detail: "Inhale fresh ocean air... fill your chest.", color: "text-[#163A2E]", scale: "scale-125" };
       case "hold_in":
         return { text: "Hold your breath", detail: "Feel the calm expand inside you.", color: "text-amber-600", scale: "scale-125" };
       case "exhale":
-        return { text: "Exhale gently", detail: "Let the stress roll out like the tide.", color: "text-[#00A896]", scale: "scale-90" };
+        return { text: "Exhale gently", detail: "Let the stress roll out like the tide.", color: "text-[#158A80]", scale: "scale-90" };
       case "hold_out":
         return { text: "Rest empty", detail: "Acknowledge the space and quiet.", color: "text-slate-500", scale: "scale-90" };
     }
@@ -86,7 +86,7 @@ export default function SafetyCenter() {
       
       {/* Title */}
       <div className="space-y-1">
-        <h1 id="safety-title" className="text-xl font-semibold tracking-tight text-[#0F4C81]">Crisis & Safety Center</h1>
+        <h1 id="safety-title" className="text-xl font-semibold tracking-tight text-[#163A2E]">Crisis & Safety Center</h1>
         <p id="safety-desc" className="text-slate-500 text-xs">
           Always available. Access immediate free telephone helplines across the Caribbean or try our structured physical grounding guides.
         </p>
@@ -98,9 +98,9 @@ export default function SafetyCenter() {
         <div className="md:col-span-6 space-y-6">
           
           {/* Interactive Breathing Guide */}
-          <div className="bg-white border border-[#EBE3D5] rounded-2xl p-6 space-y-5 shadow-sm">
+          <div className="bg-white border border-[#E3D8BF] rounded-2xl p-6 space-y-5 shadow-sm">
             <h3 className="text-sm font-semibold text-slate-800 flex items-center gap-2">
-              <Activity className="w-5 h-5 text-[#00A896]" /> Interactive Breathing Guide
+              <Activity className="w-5 h-5 text-[#158A80]" /> Interactive Breathing Guide
             </h3>
             <p className="text-xs text-slate-500">
               Box breathing is a clinically-proven method to lower stress levels and steady heart rates during high anxiety episodes.
@@ -117,9 +117,9 @@ export default function SafetyCenter() {
                 {/* Main animating bubble */}
                 <div className={`w-32 h-32 rounded-full flex flex-col items-center justify-center transition-all duration-1000 ${
                   breathingActive 
-                    ? breathingPhase === "inhale" ? "bg-[#0F4C81]/10 text-[#0F4C81] scale-110"
+                    ? breathingPhase === "inhale" ? "bg-[#163A2E]/10 text-[#163A2E] scale-110"
                       : breathingPhase === "hold_in" ? "bg-amber-150 text-amber-700 scale-110"
-                      : "bg-[#00A896]/10 text-[#00A896] scale-100"
+                      : "bg-[#158A80]/10 text-[#158A80] scale-100"
                     : "bg-slate-50 text-slate-400"
                 }`}>
                   <span className="text-xl font-bold">{timeLeft}s</span>
@@ -145,8 +145,8 @@ export default function SafetyCenter() {
                 onClick={() => setBreathingActive(!breathingActive)}
                 className={`px-6 py-2 rounded-xl text-xs font-semibold transition-all shadow-sm ${
                   breathingActive 
-                    ? "bg-[#0F4C81] hover:bg-[#1D70B8] text-white" 
-                    : "bg-[#00A896] hover:bg-[#02C39A] text-white"
+                    ? "bg-[#163A2E] hover:bg-[#1FA396] text-white" 
+                    : "bg-[#158A80] hover:bg-[#1FA396] text-white"
                 }`}
               >
                 {breathingActive ? "Pause Guide" : "Start Beachwave Breathing"}
@@ -155,9 +155,9 @@ export default function SafetyCenter() {
           </div>
 
           {/* 5-4-3-2-1 Grounding Checklist */}
-          <div className="bg-white border border-[#EBE3D5] rounded-2xl p-6 space-y-4 shadow-sm">
+          <div className="bg-white border border-[#E3D8BF] rounded-2xl p-6 space-y-4 shadow-sm">
             <h3 className="text-sm font-semibold text-slate-800 flex items-center gap-2">
-              <Compass className="w-5 h-5 text-[#0F4C81]" /> The Sensory Grounding Anchor
+              <Compass className="w-5 h-5 text-[#163A2E]" /> The Sensory Grounding Anchor
             </h3>
             <p className="text-xs text-slate-500 leading-normal">
               When panic or storm memories pull you into a spiral, focus fully on your immediate physical surroundings to steady your mind:
@@ -165,11 +165,11 @@ export default function SafetyCenter() {
 
             <div className="space-y-2 text-xs text-slate-600">
               <div className="p-2.5 bg-slate-50 rounded-xl flex items-start gap-2.5">
-                <span className="bg-[#0F4C81] text-white font-bold px-2 py-0.5 rounded text-[10px]">5</span>
+                <span className="bg-[#163A2E] text-white font-bold px-2 py-0.5 rounded text-[10px]">5</span>
                 <div><strong>Look closely around you</strong>: Name 5 objects in your sight (e.g., table, light beam, leaf outside).</div>
               </div>
               <div className="p-2.5 bg-slate-50 rounded-xl flex items-start gap-2.5">
-                <span className="bg-[#00A896] text-white font-bold px-2 py-0.5 rounded text-[10px]">4</span>
+                <span className="bg-[#158A80] text-white font-bold px-2 py-0.5 rounded text-[10px]">4</span>
                 <div><strong>Touch tactile anchors</strong>: Touch 4 distinct surfaces (e.g., cool wood, rough fabric, your own arm).</div>
               </div>
               <div className="p-2.5 bg-slate-50 rounded-xl flex items-start gap-2.5">
@@ -190,7 +190,7 @@ export default function SafetyCenter() {
         </div>
 
         {/* Right: National Crisis Lines */}
-        <div className="md:col-span-6 bg-white border border-[#EBE3D5] rounded-2xl p-6 space-y-4 shadow-sm h-fit">
+        <div className="md:col-span-6 bg-white border border-[#E3D8BF] rounded-2xl p-6 space-y-4 shadow-sm h-fit">
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 border-b border-slate-100 pb-3">
             <h3 className="text-sm font-semibold text-slate-800 flex items-center gap-2">
               <Phone className="w-5 h-5 text-red-600 animate-pulse" /> National Crisis Helplines
@@ -200,7 +200,7 @@ export default function SafetyCenter() {
             <select
               value={activeCountryFilter}
               onChange={(e) => setActiveCountryFilter(e.target.value)}
-              className="px-2.5 py-1.5 border border-[#EBE3D5] rounded-xl text-xs bg-slate-50 focus:outline-none"
+              className="px-2.5 py-1.5 border border-[#E3D8BF] rounded-xl text-xs bg-slate-50 focus:outline-none"
             >
               <option value="all">All Territories</option>
               <option value="Barbados">Barbados</option>

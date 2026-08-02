@@ -1,1 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500&display=swap');
 @import "tailwindcss";
+
+:root {
+  --canopy: #163A2E;      /* deep saman-leaf green — primary ink / dark surfaces */
+  --bark: #2B4A43;        /* muted secondary green-teal */
+  --sand: #F3ECDC;        /* warm parchment background */
+  --sand-card: #FDFBF3;   /* lighter card surface */
+  --sand-border: #E3D8BF; /* hairline borders on sand */
+  --lagoon: #158A80;      /* primary interactive teal */
+  --lagoon-light: #1FA396;
+  --hibiscus: #E4633F;    /* sparing warm accent */
+  --flare: #E9A83C;       /* sparing gold accent */
+}
+
+html {
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+body {
+  background-color: var(--sand);
+}
+
+h1 {
+  font-family: 'Fraunces', serif;
+  font-optical-sizing: auto;
+}
+
+.font-display {
+  font-family: 'Fraunces', serif;
+  font-optical-sizing: auto;
+}
+
+.font-mono-meta {
+  font-family: 'IBM Plex Mono', monospace;
+  letter-spacing: 0.02em;
+}
+
+/* Signature element: soft dappled-light wash, evoking sun through a tree canopy.
+   Used sparingly behind hero/header moments only. */
+.canopy-wash {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.canopy-wash::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(ellipse 60% 80% at 15% 20%, rgba(233, 168, 60, 0.16), transparent 60%),
+    radial-gradient(ellipse 55% 75% at 85% 15%, rgba(21, 138, 128, 0.22), transparent 60%),
+    radial-gradient(ellipse 70% 60% at 50% 100%, rgba(22, 58, 46, 0.10), transparent 65%);
+}
+
+/* Organic hairline divider — a gentle wave instead of a straight rule,
+   used sparingly between major sections to echo root/canopy lines. */
+.root-divider {
+  height: 8px;
+  width: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 8' preserveAspectRatio='none'%3E%3Cpath d='M0 4 Q 25 0, 50 4 T 100 4 T 150 4 T 200 4' fill='none' stroke='%23E3D8BF' stroke-width='1.5'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-size: 100px 8px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -148,7 +148,7 @@ export default function TherapistNetwork({ user }: TherapistProps) {
       {/* Title */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div className="space-y-1">
-          <h1 id="therapists-title" className="text-xl font-semibold tracking-tight text-[#0F4C81]">Therapist Network Hub</h1>
+          <h1 id="therapists-title" className="text-xl font-semibold tracking-tight text-[#163A2E]">Therapist Network Hub</h1>
           <p id="therapists-desc" className="text-slate-500 text-xs">
             Connect anonymously with licensed professional clinical psychologists, counselors, and psychiatrists across the Caribbean.
           </p>
@@ -158,7 +158,7 @@ export default function TherapistNetwork({ user }: TherapistProps) {
           <button
             id="btn-toggle-reg-form"
             onClick={() => setShowRegForm(!showRegForm)}
-            className="px-4 py-2 border border-[#00A896] text-[#00A896] hover:bg-[#00A896]/5 text-xs font-semibold rounded-xl transition-all flex items-center gap-1.5"
+            className="px-4 py-2 border border-[#158A80] text-[#158A80] hover:bg-[#158A80]/5 text-xs font-semibold rounded-xl transition-all flex items-center gap-1.5"
           >
             <UserPlus className="w-4 h-4" /> Are you a licensed practitioner? Register here
           </button>
@@ -174,9 +174,9 @@ export default function TherapistNetwork({ user }: TherapistProps) {
 
       {/* View 1: Clinical Registration form overlay */}
       {showRegForm && (
-        <div className="bg-white border border-[#EBE3D5] rounded-2xl p-6 shadow-sm space-y-4">
+        <div className="bg-white border border-[#E3D8BF] rounded-2xl p-6 shadow-sm space-y-4">
           <h3 className="text-sm font-semibold text-slate-800 flex items-center gap-1.5">
-            <FileText className="w-5 h-5 text-[#0F4C81]" /> Licensed Therapist Profile Intake Form
+            <FileText className="w-5 h-5 text-[#163A2E]" /> Licensed Therapist Profile Intake Form
           </h3>
           <p className="text-xs text-slate-500">Provide your credentials and professional specialties. Verification is completed anonymously.</p>
 
@@ -188,7 +188,7 @@ export default function TherapistNetwork({ user }: TherapistProps) {
                 placeholder="e.g. Dr. Alana Clarke, PhD"
                 value={regName}
                 onChange={(e) => setRegName(e.target.value)}
-                className="w-full px-3.5 py-2 border border-[#EBE3D5] rounded-xl text-xs bg-slate-50"
+                className="w-full px-3.5 py-2 border border-[#E3D8BF] rounded-xl text-xs bg-slate-50"
               />
             </div>
             <div className="space-y-1.5">
@@ -196,7 +196,7 @@ export default function TherapistNetwork({ user }: TherapistProps) {
               <select
                 value={regCountry}
                 onChange={(e) => setRegCountry(e.target.value)}
-                className="w-full px-3.5 py-2 border border-[#EBE3D5] rounded-xl text-xs bg-slate-50"
+                className="w-full px-3.5 py-2 border border-[#E3D8BF] rounded-xl text-xs bg-slate-50"
               >
                 <option value="Barbados">Barbados</option>
                 <option value="Jamaica">Jamaica</option>
@@ -212,7 +212,7 @@ export default function TherapistNetwork({ user }: TherapistProps) {
                 placeholder="e.g. Doctor of Philosophy in Clinical Psychology, University of the West Indies, 2014"
                 value={regCredentials}
                 onChange={(e) => setRegCredentials(e.target.value)}
-                className="w-full px-3.5 py-2 border border-[#EBE3D5] rounded-xl text-xs bg-slate-50"
+                className="w-full px-3.5 py-2 border border-[#E3D8BF] rounded-xl text-xs bg-slate-50"
               />
             </div>
             <div className="md:col-span-2 space-y-1.5">
@@ -222,7 +222,7 @@ export default function TherapistNetwork({ user }: TherapistProps) {
                 placeholder="e.g. CBT, Anxiety, Storm Trauma, Family Counseling, Stress Management"
                 value={regSpecialties}
                 onChange={(e) => setRegSpecialties(e.target.value)}
-                className="w-full px-3.5 py-2 border border-[#EBE3D5] rounded-xl text-xs bg-slate-50"
+                className="w-full px-3.5 py-2 border border-[#E3D8BF] rounded-xl text-xs bg-slate-50"
               />
             </div>
             <div className="md:col-span-2 space-y-1.5">
@@ -232,7 +232,7 @@ export default function TherapistNetwork({ user }: TherapistProps) {
                 placeholder="Briefly describe your treatment approach, community work, or clinical background in our region."
                 value={regBio}
                 onChange={(e) => setRegBio(e.target.value)}
-                className="w-full px-3.5 py-2.5 border border-[#EBE3D5] rounded-xl text-xs bg-slate-50"
+                className="w-full px-3.5 py-2.5 border border-[#E3D8BF] rounded-xl text-xs bg-slate-50"
               />
             </div>
 
@@ -246,7 +246,7 @@ export default function TherapistNetwork({ user }: TherapistProps) {
               </button>
               <button
                 type="submit"
-                className="px-5 py-2 bg-[#00A896] hover:bg-[#02C39A] text-white rounded-xl text-xs font-semibold"
+                className="px-5 py-2 bg-[#158A80] hover:bg-[#1FA396] text-white rounded-xl text-xs font-semibold"
               >
                 Activate Clinical Therapist Account
               </button>
@@ -260,7 +260,7 @@ export default function TherapistNetwork({ user }: TherapistProps) {
         
         {/* Left Column: Therapists Catalog */}
         <div className="lg:col-span-7 space-y-4">
-          <div className="bg-white border border-[#EBE3D5] rounded-2xl p-4 flex flex-col sm:flex-row justify-between gap-3 shadow-sm">
+          <div className="bg-white border border-[#E3D8BF] rounded-2xl p-4 flex flex-col sm:flex-row justify-between gap-3 shadow-sm">
             <div className="relative flex-1">
               <Search className="absolute left-3.5 top-2.5 w-4 h-4 text-slate-400" />
               <input
@@ -268,14 +268,14 @@ export default function TherapistNetwork({ user }: TherapistProps) {
                 placeholder="Search specialists or specialties..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 bg-slate-50 border border-[#EBE3D5] rounded-xl text-slate-800 focus:outline-none text-xs"
+                className="w-full pl-10 pr-4 py-2 bg-slate-50 border border-[#E3D8BF] rounded-xl text-slate-800 focus:outline-none text-xs"
               />
             </div>
 
             <select
               value={countryFilter}
               onChange={(e) => setCountryFilter(e.target.value)}
-              className="px-3 py-2 bg-slate-50 border border-[#EBE3D5] rounded-xl text-xs text-slate-700 focus:outline-none"
+              className="px-3 py-2 bg-slate-50 border border-[#E3D8BF] rounded-xl text-xs text-slate-700 focus:outline-none"
             >
               <option value="all">All Territories</option>
               <option value="Barbados">Barbados</option>
@@ -288,12 +288,12 @@ export default function TherapistNetwork({ user }: TherapistProps) {
 
           <div className="space-y-4 max-h-[500px] overflow-y-auto pr-1">
             {filteredTherapists.length === 0 ? (
-              <div className="p-8 bg-white border border-[#EBE3D5] rounded-2xl text-center text-slate-400 text-xs italic">
+              <div className="p-8 bg-white border border-[#E3D8BF] rounded-2xl text-center text-slate-400 text-xs italic">
                 No matching licensed clinical practitioners found. Adjust filter variables.
               </div>
             ) : (
               filteredTherapists.map((ther) => (
-                <div key={ther.id} className="bg-white border border-[#EBE3D5] rounded-2xl p-5 shadow-sm space-y-4">
+                <div key={ther.id} className="bg-white border border-[#E3D8BF] rounded-2xl p-5 shadow-sm space-y-4">
                   <div className="flex justify-between items-start gap-3">
                     <div className="space-y-1">
                       <div className="flex items-center gap-1.5">
@@ -332,7 +332,7 @@ export default function TherapistNetwork({ user }: TherapistProps) {
                           setSuccess("");
                           setActiveTherapist(ther);
                         }}
-                        className="px-4 py-1.5 bg-[#0F4C81] hover:bg-[#1D70B8] text-white text-[11px] font-semibold rounded-xl transition-all"
+                        className="px-4 py-1.5 bg-[#163A2E] hover:bg-[#1FA396] text-white text-[11px] font-semibold rounded-xl transition-all"
                       >
                         Request Appointment
                       </button>
@@ -349,7 +349,7 @@ export default function TherapistNetwork({ user }: TherapistProps) {
           
           {/* Appointment request panel */}
           {activeTherapist && (
-            <div className="bg-[#FBF8F3] border border-amber-100 rounded-2xl p-5 space-y-4">
+            <div className="bg-[#FAF6EA] border border-amber-100 rounded-2xl p-5 space-y-4">
               <h3 className="text-xs font-bold text-amber-900 uppercase tracking-wider flex items-center gap-1.5">
                 <Calendar className="w-4.5 h-4.5 text-amber-700 animate-bounce" /> Request Appointment Slot
               </h3>
@@ -363,7 +363,7 @@ export default function TherapistNetwork({ user }: TherapistProps) {
                     value={bookDate}
                     onChange={(e) => setBookDate(e.target.value)}
                     required
-                    className="w-full px-3 py-1.5 bg-white border border-[#EBE3D5] rounded-xl text-xs text-slate-800"
+                    className="w-full px-3 py-1.5 bg-white border border-[#E3D8BF] rounded-xl text-xs text-slate-800"
                   />
                 </div>
                 <div className="space-y-1">
@@ -372,7 +372,7 @@ export default function TherapistNetwork({ user }: TherapistProps) {
                     value={bookSlot}
                     onChange={(e) => setBookSlot(e.target.value)}
                     required
-                    className="w-full px-3 py-1.5 bg-white border border-[#EBE3D5] rounded-xl text-xs text-slate-800"
+                    className="w-full px-3 py-1.5 bg-white border border-[#E3D8BF] rounded-xl text-xs text-slate-800"
                   >
                     <option value="">-- Choose a slot --</option>
                     {activeTherapist.availability_slots.map((sl) => (
@@ -387,7 +387,7 @@ export default function TherapistNetwork({ user }: TherapistProps) {
                     placeholder="Briefly state symptoms (e.g. general anxiety). Note: this is encrypted."
                     value={bookNotes}
                     onChange={(e) => setBookNotes(e.target.value)}
-                    className="w-full px-3 py-1.5 bg-white border border-[#EBE3D5] rounded-xl text-xs text-slate-800"
+                    className="w-full px-3 py-1.5 bg-white border border-[#E3D8BF] rounded-xl text-xs text-slate-800"
                   />
                 </div>
 
@@ -401,7 +401,7 @@ export default function TherapistNetwork({ user }: TherapistProps) {
                   </button>
                   <button
                     type="submit"
-                    className="flex-1 py-1.5 bg-[#0F4C81] hover:bg-[#1D70B8] text-white rounded-xl text-xs font-semibold"
+                    className="flex-1 py-1.5 bg-[#163A2E] hover:bg-[#1FA396] text-white rounded-xl text-xs font-semibold"
                   >
                     Book Slot
                   </button>
@@ -411,9 +411,9 @@ export default function TherapistNetwork({ user }: TherapistProps) {
           )}
 
           {/* Appointments list */}
-          <div className="bg-white border border-[#EBE3D5] rounded-2xl p-5 space-y-4 shadow-sm">
+          <div className="bg-white border border-[#E3D8BF] rounded-2xl p-5 space-y-4 shadow-sm">
             <h3 className="text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center gap-1.5">
-              <ClipboardList className="w-4.5 h-4.5 text-[#00A896]" /> Requested Appointments
+              <ClipboardList className="w-4.5 h-4.5 text-[#158A80]" /> Requested Appointments
             </h3>
 
             {appointments.length === 0 ? (
@@ -421,7 +421,7 @@ export default function TherapistNetwork({ user }: TherapistProps) {
             ) : (
               <div className="space-y-3">
                 {appointments.map((appt) => (
-                  <div key={appt.id} className="p-3 bg-[#FBF8F3] border border-[#EBE3D5] rounded-xl text-xs space-y-1.5">
+                  <div key={appt.id} className="p-3 bg-[#FAF6EA] border border-[#E3D8BF] rounded-xl text-xs space-y-1.5">
                     <div className="flex justify-between items-center text-[10px] text-slate-400">
                       <span className="font-semibold text-slate-600">ID: {appt.id.substring(0,8)}</span>
                       <span className={`font-bold uppercase px-1.5 py-0.5 rounded text-[8px] ${
@@ -435,7 +435,7 @@ export default function TherapistNetwork({ user }: TherapistProps) {
 
                     <div className="flex justify-between font-semibold text-slate-700 text-[11px]">
                       <span>{user.role === "therapist" ? `Patient: ${appt.user_name}` : `Therapist: ${appt.therapist_name}`}</span>
-                      <span className="text-[#0F4C81]">{appt.slot}</span>
+                      <span className="text-[#163A2E]">{appt.slot}</span>
                     </div>
 
                     <p className="text-[10px] text-slate-400 flex items-center gap-1">

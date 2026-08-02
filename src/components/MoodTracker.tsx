@@ -81,7 +81,7 @@ export default function MoodTracker({ user }: MoodTrackerProps) {
   const renderTrendChart = () => {
     if (history.length < 2) {
       return (
-        <div className="h-44 flex flex-col items-center justify-center bg-[#FBF8F3] border border-dashed border-[#EBE3D5] rounded-xl text-xs text-slate-500 p-4 text-center">
+        <div className="h-44 flex flex-col items-center justify-center bg-[#FAF6EA] border border-dashed border-[#E3D8BF] rounded-xl text-xs text-slate-500 p-4 text-center">
           <TrendingUp className="w-8 h-8 text-slate-300 mb-1" />
           <span>Chart needs at least 2 check-ins to map trends.</span>
           <span className="text-[10px] text-slate-400 mt-0.5">Your data stays local and encrypted.</span>
@@ -125,7 +125,7 @@ export default function MoodTracker({ user }: MoodTrackerProps) {
                   y1={y}
                   x2={width - padding}
                   y2={y}
-                  stroke="#F1EBE1"
+                  stroke="#EAE0C8"
                   strokeWidth="1"
                 />
               );
@@ -134,7 +134,7 @@ export default function MoodTracker({ user }: MoodTrackerProps) {
             {/* Mood Line (Ocean Blue) */}
             <polyline
               fill="none"
-              stroke="#0F4C81"
+              stroke="#163A2E"
               strokeWidth="3"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -144,7 +144,7 @@ export default function MoodTracker({ user }: MoodTrackerProps) {
             {/* Stress Line (Caribbean Teal) */}
             <polyline
               fill="none"
-              stroke="#00A896"
+              stroke="#158A80"
               strokeWidth="2.5"
               strokeDasharray="4,4"
               strokeLinecap="round"
@@ -161,9 +161,9 @@ export default function MoodTracker({ user }: MoodTrackerProps) {
               return (
                 <g key={check.id}>
                   {/* Mood circle */}
-                  <circle cx={x} cy={yMood} r="4.5" fill="#0F4C81" stroke="white" strokeWidth="1.5" />
+                  <circle cx={x} cy={yMood} r="4.5" fill="#163A2E" stroke="white" strokeWidth="1.5" />
                   {/* Stress circle */}
-                  <circle cx={x} cy={yStress} r="4" fill="#00A896" stroke="white" strokeWidth="1.5" />
+                  <circle cx={x} cy={yStress} r="4" fill="#158A80" stroke="white" strokeWidth="1.5" />
                 </g>
               );
             })}
@@ -173,11 +173,11 @@ export default function MoodTracker({ user }: MoodTrackerProps) {
         {/* Legend */}
         <div className="flex items-center justify-center gap-6 text-[11px] text-slate-500 pt-2 border-t border-slate-100">
           <div className="flex items-center gap-2">
-            <span className="w-3.5 h-0.5 bg-[#0F4C81] inline-block"></span>
+            <span className="w-3.5 h-0.5 bg-[#163A2E] inline-block"></span>
             <span className="font-medium text-slate-700">Mood Score (1-5)</span>
           </div>
           <div className="flex items-center gap-2">
-            <span className="w-3.5 h-0.5 border-t-2 border-dashed border-[#00A896] inline-block"></span>
+            <span className="w-3.5 h-0.5 border-t-2 border-dashed border-[#158A80] inline-block"></span>
             <span className="font-medium text-slate-700">Stress Intensity (1-5)</span>
           </div>
         </div>
@@ -190,7 +190,7 @@ export default function MoodTracker({ user }: MoodTrackerProps) {
       
       {/* Title */}
       <div className="space-y-1">
-        <h1 id="mood-title" className="text-xl font-semibold tracking-tight text-[#0F4C81]">Wellness Logger</h1>
+        <h1 id="mood-title" className="text-xl font-semibold tracking-tight text-[#163A2E]">Wellness Logger</h1>
         <p id="mood-desc" className="text-slate-500 text-xs">
           A non-diagnostic tracking log to note your stress levels, mood patterns, and vital factors safely.
         </p>
@@ -199,9 +199,9 @@ export default function MoodTracker({ user }: MoodTrackerProps) {
       <div id="mood-cols" className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         
         {/* Left Col: The Logging Form */}
-        <form onSubmit={handleSubmit} className="lg:col-span-7 bg-white border border-[#EBE3D5] rounded-2xl p-6 space-y-6">
+        <form onSubmit={handleSubmit} className="lg:col-span-7 bg-white border border-[#E3D8BF] rounded-2xl p-6 space-y-6">
           <h2 className="text-sm font-semibold text-slate-800 flex items-center gap-2 pb-3 border-b border-slate-100">
-            <Sliders className="w-4 h-4 text-[#00A896]" /> Today's Reflections
+            <Sliders className="w-4 h-4 text-[#158A80]" /> Today's Reflections
           </h2>
 
           {successMsg && (
@@ -215,7 +215,7 @@ export default function MoodTracker({ user }: MoodTrackerProps) {
           <div className="space-y-1.5">
             <div className="flex justify-between items-center text-xs">
               <span className="font-semibold text-slate-700">General Mood</span>
-              <span className="text-[#0F4C81] font-bold bg-[#0F4C81]/5 px-2 py-0.5 rounded">
+              <span className="text-[#163A2E] font-bold bg-[#163A2E]/5 px-2 py-0.5 rounded">
                 {mood}/5 • {SCORE_LABELS.mood[mood - 1]}
               </span>
             </div>
@@ -225,7 +225,7 @@ export default function MoodTracker({ user }: MoodTrackerProps) {
               max="5"
               value={mood}
               onChange={(e) => setMood(Number(e.target.value))}
-              className="w-full accent-[#0F4C81] bg-slate-100 h-1.5 rounded-lg appearance-none cursor-pointer"
+              className="w-full accent-[#163A2E] bg-slate-100 h-1.5 rounded-lg appearance-none cursor-pointer"
             />
           </div>
 
@@ -233,7 +233,7 @@ export default function MoodTracker({ user }: MoodTrackerProps) {
           <div className="space-y-1.5">
             <div className="flex justify-between items-center text-xs">
               <span className="font-semibold text-slate-700">Stress Level</span>
-              <span className="text-[#00A896] font-bold bg-[#00A896]/5 px-2 py-0.5 rounded">
+              <span className="text-[#158A80] font-bold bg-[#158A80]/5 px-2 py-0.5 rounded">
                 {stress}/5 • {SCORE_LABELS.stress[stress - 1]}
               </span>
             </div>
@@ -243,7 +243,7 @@ export default function MoodTracker({ user }: MoodTrackerProps) {
               max="5"
               value={stress}
               onChange={(e) => setStress(Number(e.target.value))}
-              className="w-full accent-[#00A896] bg-slate-100 h-1.5 rounded-lg appearance-none cursor-pointer"
+              className="w-full accent-[#158A80] bg-slate-100 h-1.5 rounded-lg appearance-none cursor-pointer"
             />
           </div>
 
@@ -293,14 +293,14 @@ export default function MoodTracker({ user }: MoodTrackerProps) {
               placeholder="e.g., Felt a bit winded by workload, but enjoyed a nice sea breeze walk later."
               value={note}
               onChange={(e) => setNote(e.target.value)}
-              className="w-full px-4 py-2.5 bg-[#FBF8F3] border border-[#EBE3D5] rounded-xl text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#00A896]/30 text-xs"
+              className="w-full px-4 py-2.5 bg-[#FAF6EA] border border-[#E3D8BF] rounded-xl text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#158A80]/30 text-xs"
             />
           </div>
 
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-2.5 bg-[#0F4C81] hover:bg-[#1D70B8] disabled:bg-[#0F4C81]/40 text-white font-medium rounded-xl transition-colors text-xs shadow-sm flex items-center justify-center gap-2"
+            className="w-full py-2.5 bg-[#163A2E] hover:bg-[#1FA396] disabled:bg-[#163A2E]/40 text-white font-medium rounded-xl transition-colors text-xs shadow-sm flex items-center justify-center gap-2"
           >
             {loading ? "Recording..." : "Save Daily Check-in"}
           </button>
@@ -310,17 +310,17 @@ export default function MoodTracker({ user }: MoodTrackerProps) {
         <div className="lg:col-span-5 space-y-6">
           
           {/* Trend chart card */}
-          <div className="bg-white border border-[#EBE3D5] rounded-2xl p-5 space-y-4 shadow-sm">
+          <div className="bg-white border border-[#E3D8BF] rounded-2xl p-5 space-y-4 shadow-sm">
             <h3 className="text-sm font-semibold text-slate-800 flex items-center gap-2">
-              <TrendingUp className="w-4 h-4 text-[#0F4C81]" /> Weekly Wellness Trend
+              <TrendingUp className="w-4 h-4 text-[#163A2E]" /> Weekly Wellness Trend
             </h3>
             {renderTrendChart()}
           </div>
 
           {/* Historical Logs List */}
-          <div className="bg-white border border-[#EBE3D5] rounded-2xl p-5 space-y-4 shadow-sm">
+          <div className="bg-white border border-[#E3D8BF] rounded-2xl p-5 space-y-4 shadow-sm">
             <h3 className="text-sm font-semibold text-slate-800 flex items-center gap-2">
-              <Calendar className="w-4 h-4 text-[#00A896]" /> Logs History
+              <Calendar className="w-4 h-4 text-[#158A80]" /> Logs History
             </h3>
 
             {history.length === 0 ? (
@@ -328,7 +328,7 @@ export default function MoodTracker({ user }: MoodTrackerProps) {
             ) : (
               <div className="space-y-3 max-h-60 overflow-y-auto pr-1">
                 {history.map((log) => (
-                  <div key={log.id} className="p-3 bg-[#FBF8F3] border border-[#EBE3D5] rounded-xl text-xs space-y-1">
+                  <div key={log.id} className="p-3 bg-[#FAF6EA] border border-[#E3D8BF] rounded-xl text-xs space-y-1">
                     <div className="flex justify-between text-[10px] text-slate-400">
                       <span>{new Date(log.created_at).toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" })}</span>
                       <span className="text-slate-500 font-semibold">Mood: {log.mood_score}/5</span>

@@ -29,22 +29,15 @@ export default function App() {
   // Deep link state for Peer Direct Message redirection from communities
   const [initialDMTargetUserId, setInitialDMTargetUserId] = useState<string | undefined>(undefined);
 
-  // Authenticate and handshake session on load
+  // Authenticate and handshake session on load — the browser sends the
+  // httpOnly session cookie automatically, so there's no client-held id.
   useEffect(() => {
-    const userId = localStorage.getItem("carib_wellness_user_id");
-    if (!userId) {
-      setLoading(false);
-      return;
-    }
-
     const checkSession = async () => {
       try {
-        const res = await fetch(`/api/users/${userId}`);
+        const res = await fetch("/api/auth/session");
         if (res.ok) {
           const userData = await res.json();
           setUser(userData);
-        } else {
-          localStorage.removeItem("carib_wellness_user_id");
         }
       } catch (err) {
         console.error("Session restoration error:", err);
@@ -58,9 +51,10 @@ export default function App() {
 
   const handleLogout = () => {
     if (window.confirm("Are you sure you want to exit your private session? Your anonymous identity and AES-256 encrypted entries will remain safe.")) {
-      localStorage.removeItem("carib_wellness_user_id");
-      setUser(null);
-      setActiveTab("dashboard");
+      fetch("/api/auth/logout", { method: "POST" }).finally(() => {
+        setUser(null);
+        setActiveTab("dashboard");
+      });
     }
   };
 
@@ -71,10 +65,10 @@ export default function App() {
 
   if (loading) {
     return (
-      <div id="app-loading-container" className="min-h-screen bg-[#F8F1E5] flex flex-col items-center justify-center p-4">
+      <div id="app-loading-container" className="min-h-screen bg-[#F3ECDC] flex flex-col items-center justify-center p-4">
         <div className="flex flex-col items-center gap-3">
-          <div className="w-12 h-12 border-4 border-[#00A896] border-t-transparent rounded-full animate-spin"></div>
-          <p className="text-sm font-semibold text-[#0F4C81]">Opening Private Wellness Portal...</p>
+          <div className="w-12 h-12 border-4 border-[#158A80] border-t-transparent rounded-full animate-spin"></div>
+          <p className="text-sm font-semibold text-[#163A2E] font-display">Opening Private Wellness Portal...</p>
         </div>
       </div>
     );
@@ -105,31 +99,34 @@ export default function App() {
     <div className={`min-h-screen flex flex-col transition-all ${
       highContrast 
         ? "bg-black text-white selection:bg-yellow-400 selection:text-black" 
-        : "bg-[#F8F1E5] text-slate-800"
+        : "bg-[#F3ECDC] text-[#1E2B26]"
     }`}>
       
       {/* 1. TOP RESPONSIVE HEADER */}
-      <header className={`sticky top-0 z-40 border-b flex items-center justify-between px-4 py-3 shadow-sm transition-all ${
+      <header className={`sticky top-0 z-40 flex items-center justify-between px-4 py-3 transition-all ${
         highContrast 
-          ? "bg-neutral-900 border-white/20 text-white" 
-          : "bg-[#FFFDF9] border-[#EBE3D5] text-slate-800"
+          ? "bg-neutral-900 border-b border-white/20 text-white" 
+          : "bg-[#163A2E] text-white"
       }`}>
         
         {/* Logo and Menu Trigger */}
         <div className="flex items-center gap-3">
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="p-1.5 md:hidden text-slate-500 hover:text-slate-800 transition-colors"
+            className="p-1.5 md:hidden text-white/70 hover:text-white transition-colors"
             title="Toggle Menu"
           >
             {menuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
           
-          <div className="flex items-center gap-2">
-            <span className="text-xl">🌳</span>
+          <div className="flex items-center gap-2.5">
+            <svg viewBox="0 0 32 32" className="w-7 h-7 shrink-0" aria-hidden="true">
+              <path d="M16 4C9 4 4 9 6 15c1 3 4 4 7 3.5C12 22 11 26 9 29h4c1.5-3 2.5-6.5 2.5-10.2C15.5 22 16.5 22 17 19.3c3 0.5 6-0.5 7-3.3C26 9 23 4 16 4Z" fill={highContrast ? "#FFFFFF" : "#E9A83C"} opacity="0.95"/>
+              <path d="M16 9c-3 0-5.5 2-5 5 0.5 2 2.5 2.5 4.5 2 -0.5 1.5 -1 3 -1 5h2c0.5-2 0.7-3.5 0.5-5 2 0.5 4-0.5 4.5-2 0.5-3-2-5-5-5Z" fill={highContrast ? "#000000" : "#158A80"} opacity="0.4"/>
+            </svg>
             <div className="leading-tight">
-              <span id="app-brand-name" className="text-sm font-bold tracking-tight text-[#0F4C81] block">Saman Wellness Portal</span>
-              <span className="text-[9px] text-slate-400 block uppercase tracking-wider">Caribbean Support Space</span>
+              <span id="app-brand-name" className="font-display text-base font-semibold tracking-tight text-white block">Saman</span>
+              <span className="text-[9px] text-white/50 block uppercase tracking-wider">Caribbean Wellness Space</span>
             </div>
           </div>
         </div>
@@ -139,12 +136,12 @@ export default function App() {
           
           {/* User Profile Info Badge */}
           <div className={`hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-xl border text-xs font-semibold ${
-            highContrast ? "border-white/30 bg-white/5" : "border-[#EBE3D5] bg-[#FBF8F3]"
+            highContrast ? "border-white/30 bg-white/5" : "border-white/15 bg-white/5 text-white/90"
           }`}>
             <span>@{user.anonymous_username}</span>
-            <span className="text-slate-400 font-normal">({user.country})</span>
+            <span className="text-white/40 font-normal">({user.country})</span>
             {user.role !== "user" && (
-              <span className="text-[9px] uppercase tracking-wide bg-rose-50 text-rose-700 font-bold px-1.5 py-0.5 rounded">
+              <span className="text-[9px] uppercase tracking-wide bg-[#E4633F]/20 text-[#F4A187] font-bold px-1.5 py-0.5 rounded">
                 {user.role}
               </span>
             )}
@@ -157,7 +154,7 @@ export default function App() {
             className={`p-2.5 rounded-xl border transition-colors ${
               highContrast 
                 ? "bg-white text-black hover:bg-slate-200 border-white" 
-                : "bg-[#FBF8F3] text-slate-500 hover:text-[#0F4C81] border-[#EBE3D5]"
+                : "bg-white/5 text-white/70 hover:text-white border-white/15"
             }`}
             title="Toggle high-contrast accessibility mode"
           >
@@ -171,7 +168,7 @@ export default function App() {
             className={`p-2.5 rounded-xl border transition-colors ${
               highContrast 
                 ? "bg-neutral-800 text-white hover:bg-neutral-700 border-white/20" 
-                : "bg-red-50 hover:bg-red-100 text-red-600 border-red-100"
+                : "bg-[#E4633F]/15 hover:bg-[#E4633F]/25 text-[#F4A187] border-[#E4633F]/20"
             }`}
             title="Exit private session"
           >
@@ -191,12 +188,12 @@ export default function App() {
         } ${
           highContrast 
             ? "bg-neutral-900 border-r border-white/20" 
-            : "bg-[#FFFDF9] border-r border-[#EBE3D5]"
+            : "bg-[#163A2E] md:bg-transparent"
         }`}>
           
           <div className="space-y-1.5 flex flex-col h-full justify-between">
             <div className="space-y-1">
-              <span className="text-[10px] uppercase font-bold text-slate-400 tracking-wider block px-3.5 mb-2">Navigation Portal</span>
+              <span className={`text-[10px] uppercase font-bold tracking-wider block px-3.5 mb-2 ${highContrast ? "text-white/40" : "text-[#7A8C84]"}`}>Navigation</span>
               {tabs.map((tab) => {
                 const TabIcon = tab.icon;
                 const isActive = activeTab === tab.id;
@@ -216,10 +213,10 @@ export default function App() {
                       isActive
                         ? highContrast
                           ? "bg-white text-black font-extrabold shadow-sm"
-                          : "bg-[#0F4C81] text-white font-extrabold shadow-sm"
+                          : "bg-[#158A80] text-white font-bold shadow-sm shadow-[#158A80]/20"
                         : highContrast
                           ? "hover:bg-white/10 text-white"
-                          : "hover:bg-slate-50 text-slate-600 hover:text-slate-800"
+                          : "hover:bg-[#163A2E]/[0.06] text-[#3E5750]"
                     }`}
                   >
                     <TabIcon className="w-4.5 h-4.5 shrink-0" />
@@ -230,7 +227,9 @@ export default function App() {
             </div>
 
             {/* Micro disclaimer bottom of sidebar */}
-            <div className="p-3 bg-slate-50/50 rounded-xl border border-slate-100/50 text-[9px] text-slate-400 leading-normal">
+            <div className={`p-3 rounded-xl border text-[9px] leading-normal ${
+              highContrast ? "bg-white/5 border-white/10 text-white/40" : "bg-[#163A2E]/[0.04] border-[#163A2E]/[0.06] text-[#7A8C84]"
+            }`}>
               🔒 Private, anonymous session verified and certified by clinical networks.
             </div>
           </div>

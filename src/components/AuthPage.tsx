@@ -60,12 +60,6 @@ export default function AuthPage({ onAuthSuccess }: AuthPageProps) {
 
     setLoading(true);
     try {
-      // Determine if registering as moderator for testing purposes
-      let role: "user" | "moderator" = "user";
-      if (isModeratorCode.trim() === "carib-mod-2026") {
-        role = "moderator";
-      }
-
       const res = await fetch("/api/auth/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -73,7 +67,9 @@ export default function AuthPage({ onAuthSuccess }: AuthPageProps) {
           anonymous_username: username.toLowerCase().trim(),
           avatar_id: selectedAvatar,
           country,
-          role
+          // The server decides the role — it only grants moderator status
+          // if this code matches a secret configured in its own environment.
+          moderator_invite_code: isModeratorCode.trim()
         })
       });
 
@@ -82,7 +78,6 @@ export default function AuthPage({ onAuthSuccess }: AuthPageProps) {
         throw new Error(data.error || "Failed to register anonymous account");
       }
 
-      localStorage.setItem("carib_wellness_user_id", data.id);
       onAuthSuccess(data);
     } catch (err: any) {
       setError(err.message || "An error occurred.");
@@ -92,18 +87,21 @@ export default function AuthPage({ onAuthSuccess }: AuthPageProps) {
   };
 
   return (
-    <div id="auth-page-container" className="min-h-screen bg-[#F8F1E5] flex items-center justify-center p-4">
-      <div id="auth-card" className="w-full max-w-lg bg-white rounded-2xl shadow-sm border border-[#EBE3D5] overflow-hidden">
+    <div id="auth-page-container" className="min-h-screen bg-[#F3ECDC] flex items-center justify-center p-4 canopy-wash">
+      <div id="auth-card" className="w-full max-w-lg bg-[#FDFBF3] rounded-[28px] shadow-xl shadow-[#163A2E]/5 border border-[#E3D8BF] overflow-hidden">
         
         {/* Header decoration */}
-        <div id="auth-header-bg" className="bg-gradient-to-r from-[#0F4C81] to-[#00A896] p-6 text-white text-center">
-          <div className="inline-flex p-3 bg-white/10 rounded-full mb-3">
-            <Shield className="w-6 h-6 text-[#F4D35E]" />
+        <div id="auth-header-bg" className="relative bg-[#163A2E] p-8 text-white text-center overflow-hidden">
+          <div className="absolute inset-0 opacity-40" style={{ background: "radial-gradient(ellipse 70% 100% at 50% -20%, rgba(233,168,60,0.35), transparent 60%)" }} />
+          <div className="relative">
+            <div className="inline-flex p-3 bg-white/10 rounded-full mb-3 ring-1 ring-white/15">
+              <Shield className="w-6 h-6 text-[#E9A83C]" />
+            </div>
+            <h1 id="auth-title" className="font-display text-3xl font-semibold tracking-tight">Saman Wellness Portal</h1>
+            <p id="auth-subtitle" className="text-sm text-white/70 mt-2 max-w-md mx-auto leading-relaxed">
+              A private, anonymous space designed specifically for Caribbean minds to connect, reflect, and grow.
+            </p>
           </div>
-          <h1 id="auth-title" className="text-2xl font-semibold tracking-tight">Saman Wellness Portal</h1>
-          <p id="auth-subtitle" className="text-sm text-teal-50/80 mt-1 max-w-md mx-auto">
-            A private, anonymous space designed specifically for Caribbean minds to connect, reflect, and grow.
-          </p>
         </div>
 
         {/* Form Body */}
@@ -116,9 +114,9 @@ export default function AuthPage({ onAuthSuccess }: AuthPageProps) {
           )}
 
           {/* Guidelines info */}
-          <div id="privacy-guarantees" className="bg-[#FBF8F3] border border-[#EBE3D5] p-4 rounded-xl space-y-2">
-            <h3 className="text-xs font-semibold uppercase tracking-wider text-[#0F4C81] flex items-center gap-1.5">
-              <Heart className="w-3.5 h-3.5 text-[#00A896]" /> Absolute Privacy Guarantees
+          <div id="privacy-guarantees" className="bg-[#FAF6EA] border border-[#E3D8BF] p-4 rounded-xl space-y-2">
+            <h3 className="text-xs font-semibold uppercase tracking-wider text-[#163A2E] flex items-center gap-1.5">
+              <Heart className="w-3.5 h-3.5 text-[#158A80]" /> Absolute Privacy Guarantees
             </h3>
             <ul className="text-xs text-slate-600 space-y-1 list-disc pl-4">
               <li>We <strong>NEVER</strong> collect your real name, email, phone number, or address.</li>
@@ -139,13 +137,13 @@ export default function AuthPage({ onAuthSuccess }: AuthPageProps) {
                 placeholder="e.g. calm_breeze24"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
-                className="flex-1 px-4 py-2.5 bg-[#FBF8F3] border border-[#EBE3D5] rounded-xl text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#00A896]/30 text-sm"
+                className="flex-1 px-4 py-2.5 bg-[#FAF6EA] border border-[#E3D8BF] rounded-xl text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#158A80]/30 text-sm"
               />
               <button
                 id="btn-generate-name"
                 type="button"
                 onClick={handleRandomizeName}
-                className="px-3 py-2 bg-[#00A896] hover:bg-[#02C39A] text-white rounded-xl text-xs font-medium transition-colors"
+                className="px-3 py-2 bg-[#158A80] hover:bg-[#1FA396] text-white rounded-xl text-xs font-medium transition-colors"
               >
                 Generate Name
               </button>
@@ -162,7 +160,7 @@ export default function AuthPage({ onAuthSuccess }: AuthPageProps) {
               id="select-country"
               value={country}
               onChange={(e) => setCountry(e.target.value)}
-              className="w-full px-4 py-2.5 bg-[#FBF8F3] border border-[#EBE3D5] rounded-xl text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#00A896]/30 text-sm"
+              className="w-full px-4 py-2.5 bg-[#FAF6EA] border border-[#E3D8BF] rounded-xl text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#158A80]/30 text-sm"
             >
               {CARIBBEAN_COUNTRIES.map((c) => (
                 <option key={c} value={c}>{c}</option>
@@ -185,8 +183,8 @@ export default function AuthPage({ onAuthSuccess }: AuthPageProps) {
                   onClick={() => setSelectedAvatar(av.id)}
                   className={`p-3 rounded-xl border flex flex-col items-center justify-center transition-all ${
                     selectedAvatar === av.id
-                      ? "border-[#00A896] bg-[#00A896]/5 ring-2 ring-[#00A896]/20"
-                      : "border-[#EBE3D5] bg-white hover:bg-slate-50"
+                      ? "border-[#158A80] bg-[#158A80]/5 ring-2 ring-[#158A80]/20"
+                      : "border-[#E3D8BF] bg-white hover:bg-slate-50"
                   }`}
                 >
                   <span className="text-2xl mb-1">{av.emoji}</span>
@@ -201,14 +199,14 @@ export default function AuthPage({ onAuthSuccess }: AuthPageProps) {
             <button
               type="button"
               onClick={() => setIsModeratorCode(isModeratorCode ? "" : " ")}
-              className="text-[11px] text-[#0F4C81] hover:underline"
+              className="text-[11px] text-[#163A2E] hover:underline"
             >
               Have a clinical moderator access code? Click here.
             </button>
             {isModeratorCode !== "" && (
               <input
                 type="text"
-                placeholder="Enter Moderator Code (Use: carib-mod-2026)"
+                placeholder="Enter moderator invite code"
                 value={isModeratorCode.trim()}
                 onChange={(e) => setIsModeratorCode(e.target.value)}
                 className="mt-2 w-full px-3 py-1.5 border border-amber-200 bg-amber-50/50 rounded-lg text-xs"
@@ -223,7 +221,7 @@ export default function AuthPage({ onAuthSuccess }: AuthPageProps) {
               type="checkbox"
               checked={agreedPrivacy}
               onChange={(e) => setAgreedPrivacy(e.target.checked)}
-              className="mt-1 h-4.5 w-4.5 rounded text-[#00A896] border-[#EBE3D5] focus:ring-[#00A896]"
+              className="mt-1 h-4.5 w-4.5 rounded text-[#158A80] border-[#E3D8BF] focus:ring-[#158A80]"
             />
             <span id="consent-text" className="text-xs text-slate-500 leading-normal">
               I agree that this application is a supportive wellness companion and <strong>NOT a replacement for psychiatric therapy, diagnosis, or clinical emergency treatment</strong>. My data will be kept anonymous.
@@ -235,7 +233,7 @@ export default function AuthPage({ onAuthSuccess }: AuthPageProps) {
             id="btn-submit-register"
             type="submit"
             disabled={loading}
-            className="w-full py-3 bg-[#0F4C81] hover:bg-[#1D70B8] disabled:bg-[#0F4C81]/40 text-white font-medium rounded-xl transition-colors text-sm shadow-sm flex items-center justify-center gap-2"
+            className="w-full py-3 bg-[#163A2E] hover:bg-[#1FA396] disabled:bg-[#163A2E]/40 text-white font-medium rounded-xl transition-colors text-sm shadow-sm flex items-center justify-center gap-2"
           >
             {loading ? "Establishing Private Session..." : "Enter Saman Wellness Platform"}
           </button>

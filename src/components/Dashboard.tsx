@@ -87,30 +87,30 @@ export default function Dashboard({ user, onNavigate }: DashboardProps) {
     <div id="dashboard-container" className="space-y-6 max-w-4xl mx-auto">
       
       {/* 1. Caribbean Greeting & Checkin Status Card */}
-      <div id="greeting-banner" className="bg-[#FFFDF9] border border-[#EBE3D5] rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+      <div id="greeting-banner" className="canopy-wash bg-[#163A2E] rounded-[28px] p-6 md:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 text-white">
         <div className="space-y-2">
-          <div className="flex items-center gap-2 text-[#0F4C81]">
-            <GreetingIconComponent className="w-6 h-6 text-[#F4D35E]" />
-            <h1 id="dashboard-greeting" className="text-2xl font-semibold tracking-tight">
+          <div className="flex items-center gap-2.5">
+            <GreetingIconComponent className="w-6 h-6 text-[#E9A83C]" />
+            <h1 id="dashboard-greeting" className="font-display text-3xl font-semibold tracking-tight">
               {greeting}
             </h1>
           </div>
-          <p id="dashboard-username-sub" className="text-slate-500 text-sm">
-            Logged in privately as <span className="font-semibold text-slate-800">{user.anonymous_username}</span> • From {user.country}
+          <p id="dashboard-username-sub" className="text-white/60 text-sm">
+            Logged in privately as <span className="font-semibold text-white/90">{user.anonymous_username}</span> • From {user.country}
           </p>
         </div>
 
         <div className="flex flex-col gap-2 w-full md:w-auto">
           {checkinDoneToday ? (
-            <div className="flex items-center gap-2 bg-emerald-50 border border-emerald-150 px-4 py-2.5 rounded-xl text-emerald-800 text-xs font-medium">
-              <ShieldCheck className="w-4.5 h-4.5 text-emerald-600" />
+            <div className="flex items-center gap-2 bg-white/10 border border-white/15 px-4 py-2.5 rounded-xl text-white text-xs font-medium">
+              <ShieldCheck className="w-4.5 h-4.5 text-[#5EE0C7]" />
               <span>You checked in today. Beautiful!</span>
             </div>
           ) : (
             <button
               id="btn-navigate-mood-checkin"
               onClick={() => onNavigate("mood")}
-              className="px-5 py-3 bg-[#00A896] hover:bg-[#02C39A] text-white rounded-xl text-xs font-semibold tracking-wide shadow-sm transition-all"
+              className="px-5 py-3 bg-[#158A80] hover:bg-[#1FA396] text-white rounded-xl text-xs font-semibold tracking-wide shadow-sm transition-all"
             >
               Complete Daily Wellness Check-in
             </button>
@@ -119,16 +119,16 @@ export default function Dashboard({ user, onNavigate }: DashboardProps) {
       </div>
 
       {/* 2. Safety Intercept / Resource suggestion banner */}
-      <div id="suggestion-banner" className="bg-[#F8F1E5] border border-[#EBE3D5] p-5 rounded-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+      <div id="suggestion-banner" className="bg-[#FAF6EA] border border-[#E3D8BF] p-5 rounded-2xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
         <div className="space-y-1">
-          <h3 className="text-xs font-bold uppercase tracking-wider text-[#0F4C81] flex items-center gap-1.5">
-            <Compass className="w-4 h-4 text-[#00A896]" /> {suggestion.title}
+          <h3 className="text-xs font-bold uppercase tracking-wider text-[#163A2E] flex items-center gap-1.5">
+            <Compass className="w-4 h-4 text-[#158A80]" /> {suggestion.title}
           </h3>
           <p className="text-xs text-slate-600 leading-relaxed max-w-2xl">{suggestion.body}</p>
         </div>
         <button
           onClick={() => onNavigate(suggestion.tab)}
-          className="text-xs font-semibold text-[#0F4C81] hover:text-[#1D70B8] whitespace-nowrap"
+          className="text-xs font-semibold text-[#158A80] hover:text-[#163A2E] whitespace-nowrap"
         >
           {suggestion.action} &rarr;
         </button>
@@ -141,13 +141,13 @@ export default function Dashboard({ user, onNavigate }: DashboardProps) {
         <div
           id="widget-mood"
           onClick={() => onNavigate("mood")}
-          className="bg-white border border-[#EBE3D5] p-5 rounded-2xl hover:border-[#00A896]/50 cursor-pointer transition-all space-y-4"
+          className="bg-white border border-[#E3D8BF] p-5 rounded-2xl hover:border-[#158A80]/50 cursor-pointer transition-all space-y-4"
         >
           <div className="flex items-center justify-between">
             <div className="inline-flex p-2.5 bg-rose-50 rounded-xl text-rose-600">
               <Activity className="w-5 h-5" />
             </div>
-            <span className="text-[11px] font-semibold text-[#0F4C81] uppercase tracking-wider">Mood Analytics</span>
+            <span className="text-[11px] font-semibold text-[#163A2E] uppercase tracking-wider">Mood Analytics</span>
           </div>
           <div>
             <h3 className="font-semibold text-slate-800 text-sm">Track Mood & Vitals</h3>
@@ -167,13 +167,13 @@ export default function Dashboard({ user, onNavigate }: DashboardProps) {
         <div
           id="widget-journal"
           onClick={() => onNavigate("journal")}
-          className="bg-white border border-[#EBE3D5] p-5 rounded-2xl hover:border-[#00A896]/50 cursor-pointer transition-all space-y-4"
+          className="bg-white border border-[#E3D8BF] p-5 rounded-2xl hover:border-[#158A80]/50 cursor-pointer transition-all space-y-4"
         >
           <div className="flex items-center justify-between">
             <div className="inline-flex p-2.5 bg-amber-50 rounded-xl text-amber-600">
               <BookOpen className="w-5 h-5" />
             </div>
-            <span className="text-[11px] font-semibold text-[#0F4C81] uppercase tracking-wider">Secure Journal</span>
+            <span className="text-[11px] font-semibold text-[#163A2E] uppercase tracking-wider">Secure Journal</span>
           </div>
           <div>
             <h3 className="font-semibold text-slate-800 text-sm">Encrypted Private Journal</h3>
@@ -188,13 +188,13 @@ export default function Dashboard({ user, onNavigate }: DashboardProps) {
         <div
           id="widget-ai"
           onClick={() => onNavigate("ai")}
-          className="bg-white border border-[#EBE3D5] p-5 rounded-2xl hover:border-[#00A896]/50 cursor-pointer transition-all space-y-4"
+          className="bg-white border border-[#E3D8BF] p-5 rounded-2xl hover:border-[#158A80]/50 cursor-pointer transition-all space-y-4"
         >
           <div className="flex items-center justify-between">
-            <div className="inline-flex p-2.5 bg-teal-50 rounded-xl text-[#00A896]">
+            <div className="inline-flex p-2.5 bg-teal-50 rounded-xl text-[#158A80]">
               <Compass className="w-5 h-5" />
             </div>
-            <span className="text-[11px] font-semibold text-[#0F4C81] uppercase tracking-wider">Wellness AI</span>
+            <span className="text-[11px] font-semibold text-[#163A2E] uppercase tracking-wider">Wellness AI</span>
           </div>
           <div>
             <h3 className="font-semibold text-slate-800 text-sm">Talk with Saman AI</h3>
@@ -207,13 +207,13 @@ export default function Dashboard({ user, onNavigate }: DashboardProps) {
         <div
           id="widget-community"
           onClick={() => onNavigate("community")}
-          className="bg-white border border-[#EBE3D5] p-5 rounded-2xl hover:border-[#00A896]/50 cursor-pointer transition-all space-y-4"
+          className="bg-white border border-[#E3D8BF] p-5 rounded-2xl hover:border-[#158A80]/50 cursor-pointer transition-all space-y-4"
         >
           <div className="flex items-center justify-between">
             <div className="inline-flex p-2.5 bg-blue-50 rounded-xl text-blue-600">
               <Users className="w-5 h-5" />
             </div>
-            <span className="text-[11px] font-semibold text-[#0F4C81] uppercase tracking-wider">Caribbean Forums</span>
+            <span className="text-[11px] font-semibold text-[#163A2E] uppercase tracking-wider">Caribbean Forums</span>
           </div>
           <div>
             <h3 className="font-semibold text-slate-800 text-sm">Anonymous Community Hub</h3>
@@ -225,7 +225,7 @@ export default function Dashboard({ user, onNavigate }: DashboardProps) {
       </div>
 
       {/* 4. Bottom Disclaimer */}
-      <div id="disclaimer-footer" className="bg-[#FFFDF9] border border-amber-100 p-4 rounded-xl flex items-start gap-3">
+      <div id="disclaimer-footer" className="bg-[#FDFBF3] border border-amber-100 p-4 rounded-xl flex items-start gap-3">
         <ShieldAlert className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
         <div className="space-y-1">
           <h4 className="text-xs font-semibold text-amber-900">Important Safety Disclaimer</h4>

@@ -112,7 +112,7 @@ export default function JournalComponent({ user }: JournalProps) {
       
       {/* Page Header */}
       <div className="space-y-1">
-        <h1 id="journal-title" className="text-xl font-semibold tracking-tight text-[#0F4C81]">My Secure Reflections</h1>
+        <h1 id="journal-title" className="text-xl font-semibold tracking-tight text-[#163A2E]">My Secure Reflections</h1>
         <p id="journal-desc" className="text-slate-500 text-xs flex items-center gap-1">
           <ShieldCheck className="w-4 h-4 text-emerald-600 inline" /> 
           This is your private, safe vault. Every word is encrypted via AES-256 before being committed to the database.
@@ -122,9 +122,9 @@ export default function JournalComponent({ user }: JournalProps) {
       <div id="journal-cols" className="grid grid-cols-1 md:grid-cols-12 gap-6">
         
         {/* Left Column: Create Entry */}
-        <div className="md:col-span-6 bg-white border border-[#EBE3D5] rounded-2xl p-5 space-y-5">
+        <div className="md:col-span-6 bg-white border border-[#E3D8BF] rounded-2xl p-5 space-y-5">
           <h2 className="text-sm font-semibold text-slate-800 flex items-center gap-2">
-            <Plus className="w-4.5 h-4.5 text-[#00A896]" /> New Journal Entry
+            <Plus className="w-4.5 h-4.5 text-[#158A80]" /> New Journal Entry
           </h2>
 
           <form onSubmit={handleSave} className="space-y-4">
@@ -147,7 +147,7 @@ export default function JournalComponent({ user }: JournalProps) {
                 placeholder="e.g. Setting clear boundaries at work"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
-                className="w-full px-4 py-2 bg-[#FBF8F3] border border-[#EBE3D5] rounded-xl text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#00A896]/30 text-xs"
+                className="w-full px-4 py-2 bg-[#FAF6EA] border border-[#E3D8BF] rounded-xl text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#158A80]/30 text-xs"
               />
             </div>
 
@@ -162,7 +162,7 @@ export default function JournalComponent({ user }: JournalProps) {
                     onClick={() => setMoodTag(tag.label)}
                     className={`px-3 py-1.5 rounded-full text-xs transition-all flex items-center gap-1 ${
                       moodTag === tag.label
-                        ? "bg-[#00A896] text-white border-transparent shadow-sm"
+                        ? "bg-[#158A80] text-white border-transparent shadow-sm"
                         : "bg-slate-50 text-slate-600 border border-slate-200 hover:bg-slate-100"
                     }`}
                   >
@@ -181,14 +181,14 @@ export default function JournalComponent({ user }: JournalProps) {
                 placeholder="What is circulating in your mind? Spill your thoughts freely without fear. This canvas is fully yours..."
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
-                className="w-full px-4 py-3 bg-[#FBF8F3] border border-[#EBE3D5] rounded-xl text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#00A896]/30 text-xs leading-relaxed"
+                className="w-full px-4 py-3 bg-[#FAF6EA] border border-[#E3D8BF] rounded-xl text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#158A80]/30 text-xs leading-relaxed"
               />
             </div>
 
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-2.5 bg-[#0F4C81] hover:bg-[#1D70B8] disabled:bg-[#0F4C81]/40 text-white font-medium rounded-xl transition-colors text-xs shadow-sm"
+              className="w-full py-2.5 bg-[#163A2E] hover:bg-[#1FA396] disabled:bg-[#163A2E]/40 text-white font-medium rounded-xl transition-colors text-xs shadow-sm"
             >
               {loading ? "Encrypting and Storing..." : "Commit Encrypted Entry"}
             </button>
@@ -199,7 +199,7 @@ export default function JournalComponent({ user }: JournalProps) {
         <div className="md:col-span-6 space-y-4">
           
           {/* Controls: Search and Filter */}
-          <div className="bg-white border border-[#EBE3D5] rounded-2xl p-4 flex flex-col sm:flex-row gap-3">
+          <div className="bg-white border border-[#E3D8BF] rounded-2xl p-4 flex flex-col sm:flex-row gap-3">
             <div className="relative flex-1">
               <Search className="absolute left-3 top-2.5 w-4 h-4 text-slate-400" />
               <input
@@ -207,7 +207,7 @@ export default function JournalComponent({ user }: JournalProps) {
                 placeholder="Search reflections..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-9 pr-4 py-2 bg-[#FBF8F3] border border-[#EBE3D5] rounded-xl text-slate-800 placeholder-slate-400 focus:outline-none text-xs"
+                className="w-full pl-9 pr-4 py-2 bg-[#FAF6EA] border border-[#E3D8BF] rounded-xl text-slate-800 placeholder-slate-400 focus:outline-none text-xs"
               />
             </div>
 
@@ -217,7 +217,7 @@ export default function JournalComponent({ user }: JournalProps) {
               <select
                 value={filterTag}
                 onChange={(e) => setFilterTag(e.target.value)}
-                className="px-3 py-2 bg-[#FBF8F3] border border-[#EBE3D5] rounded-xl text-slate-700 text-xs focus:outline-none"
+                className="px-3 py-2 bg-[#FAF6EA] border border-[#E3D8BF] rounded-xl text-slate-700 text-xs focus:outline-none"
               >
                 <option value="all">All Emotions</option>
                 {MOOD_TAGS.map((t) => (
@@ -232,14 +232,14 @@ export default function JournalComponent({ user }: JournalProps) {
           {/* Reflections List */}
           <div className="space-y-4 max-h-[500px] overflow-y-auto pr-1">
             {filteredJournals.length === 0 ? (
-              <div className="bg-white border border-[#EBE3D5] p-8 text-center rounded-2xl text-slate-400 text-xs italic">
+              <div className="bg-white border border-[#E3D8BF] p-8 text-center rounded-2xl text-slate-400 text-xs italic">
                 No matching journal entries found. Begin typing on the left to start your private record.
               </div>
             ) : (
               filteredJournals.map((j) => {
                 const emotionObj = MOOD_TAGS.find((m) => m.label === j.mood_tag);
                 return (
-                  <div key={j.id} className="bg-white border border-[#EBE3D5] rounded-2xl p-5 shadow-sm space-y-3 relative group">
+                  <div key={j.id} className="bg-white border border-[#E3D8BF] rounded-2xl p-5 shadow-sm space-y-3 relative group">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
                         {emotionObj && (

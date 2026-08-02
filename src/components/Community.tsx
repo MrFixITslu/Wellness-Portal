@@ -269,7 +269,7 @@ export default function CommunityComponent({ user, onNavigateToDirectMessage }: 
       
       {/* Header */}
       <div className="space-y-1">
-        <h1 id="community-title" className="text-xl font-semibold tracking-tight text-[#0F4C81]">Caribbean Support Forums</h1>
+        <h1 id="community-title" className="text-xl font-semibold tracking-tight text-[#163A2E]">Caribbean Support Forums</h1>
         <p id="community-desc" className="text-slate-500 text-xs">
           Connect anonymously with peers across Caribbean borders. Speak from the heart, share coping advice, and build mutual resilience.
         </p>
@@ -279,9 +279,9 @@ export default function CommunityComponent({ user, onNavigateToDirectMessage }: 
         
         {/* Left Column: List of Communities */}
         <div className="lg:col-span-3 space-y-4">
-          <div className="bg-white border border-[#EBE3D5] rounded-2xl p-4 space-y-3 shadow-sm">
+          <div className="bg-white border border-[#E3D8BF] rounded-2xl p-4 space-y-3 shadow-sm">
             <h3 className="text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center gap-1.5">
-              <Compass className="w-4.5 h-4.5 text-[#00A896]" /> Communities
+              <Compass className="w-4.5 h-4.5 text-[#158A80]" /> Communities
             </h3>
 
             <div className="flex flex-col gap-1.5">
@@ -295,8 +295,8 @@ export default function CommunityComponent({ user, onNavigateToDirectMessage }: 
                     onClick={() => setSelectedCommunity(comm)}
                     className={`w-full text-left px-3.5 py-2.5 rounded-xl text-xs font-medium transition-all flex items-center justify-between ${
                       isSelected
-                        ? "bg-[#0F4C81] text-white"
-                        : "bg-[#FBF8F3] hover:bg-slate-100 text-slate-700 border border-slate-100"
+                        ? "bg-[#163A2E] text-white"
+                        : "bg-[#FAF6EA] hover:bg-slate-100 text-slate-700 border border-slate-100"
                     }`}
                   >
                     <span className="truncate pr-2">{comm.name}</span>
@@ -312,7 +312,7 @@ export default function CommunityComponent({ user, onNavigateToDirectMessage }: 
           </div>
 
           {/* Configurable posting alias */}
-          <div className="bg-white border border-[#EBE3D5] rounded-2xl p-4 space-y-2 shadow-sm">
+          <div className="bg-white border border-[#E3D8BF] rounded-2xl p-4 space-y-2 shadow-sm">
             <h4 className="text-[11px] font-bold text-slate-700 uppercase tracking-wider">Your Active Alias</h4>
             <input
               type="text"
@@ -328,12 +328,12 @@ export default function CommunityComponent({ user, onNavigateToDirectMessage }: 
         {/* Center / Right Column: Active Forum Workspace */}
         <div className="lg:col-span-9 space-y-4">
           {selectedCommunity && (
-            <div className="bg-white border border-[#EBE3D5] rounded-2xl p-6 shadow-sm space-y-6">
+            <div className="bg-white border border-[#E3D8BF] rounded-2xl p-6 shadow-sm space-y-6">
               
               {/* Selected Community Header */}
               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-slate-100 pb-4">
                 <div className="space-y-1">
-                  <h2 className="text-base font-semibold text-[#0F4C81]">{selectedCommunity.name} Community</h2>
+                  <h2 className="text-base font-semibold text-[#163A2E]">{selectedCommunity.name} Community</h2>
                   <p className="text-xs text-slate-500">{selectedCommunity.description}</p>
                 </div>
 
@@ -341,7 +341,7 @@ export default function CommunityComponent({ user, onNavigateToDirectMessage }: 
                   <button
                     id={`btn-join-comm-${selectedCommunity.id}`}
                     onClick={() => handleJoin(selectedCommunity.id)}
-                    className="px-4 py-2 bg-[#00A896] hover:bg-[#02C39A] text-white text-xs font-semibold rounded-xl transition-colors shrink-0"
+                    className="px-4 py-2 bg-[#158A80] hover:bg-[#1FA396] text-white text-xs font-semibold rounded-xl transition-colors shrink-0"
                   >
                     Join Support Circle
                   </button>
@@ -364,13 +364,13 @@ export default function CommunityComponent({ user, onNavigateToDirectMessage }: 
                   {/* Back button */}
                   <button
                     onClick={() => setActivePost(null)}
-                    className="text-xs font-semibold text-[#0F4C81] hover:underline"
+                    className="text-xs font-semibold text-[#163A2E] hover:underline"
                   >
                     &larr; Back to discussion board
                   </button>
 
                   {/* Main Post */}
-                  <div className="space-y-4 bg-[#FBF8F3]/50 p-5 rounded-xl border border-slate-100">
+                  <div className="space-y-4 bg-[#FAF6EA]/50 p-5 rounded-xl border border-slate-100">
                     <div className="flex justify-between text-[11px] text-slate-400">
                       <span>Posted by <strong>{activePost.anonymous_author}</strong></span>
                       <span>{new Date(activePost.created_at).toLocaleDateString()}</span>
@@ -381,7 +381,7 @@ export default function CommunityComponent({ user, onNavigateToDirectMessage }: 
                     <div className="flex items-center gap-4 pt-3 border-t border-slate-100 text-xs text-slate-500">
                       <button
                         onClick={() => handleLike(activePost.id)}
-                        className={`flex items-center gap-1 hover:text-[#0F4C81] ${activePost.liked_by_users?.includes(user.id) ? "text-[#0F4C81] font-bold" : ""}`}
+                        className={`flex items-center gap-1 hover:text-[#163A2E] ${activePost.liked_by_users?.includes(user.id) ? "text-[#163A2E] font-bold" : ""}`}
                       >
                         <ThumbsUp className="w-4 h-4" /> {activePost.likes_count || 0} Likes
                       </button>
@@ -415,7 +415,7 @@ export default function CommunityComponent({ user, onNavigateToDirectMessage }: 
                             {onNavigateToDirectMessage && comment.user_id !== user.id && (
                               <button
                                 onClick={() => onNavigateToDirectMessage(comment.user_id)}
-                                className="text-[10px] text-[#00A896] hover:underline"
+                                className="text-[10px] text-[#158A80] hover:underline"
                               >
                                 Message anonymously &rarr;
                               </button>
@@ -443,7 +443,7 @@ export default function CommunityComponent({ user, onNavigateToDirectMessage }: 
                         className={`p-2 rounded-xl border transition-all flex items-center justify-center ${
                           showCommentVoice 
                             ? "bg-red-500 hover:bg-red-600 text-white border-transparent shadow-sm" 
-                            : "bg-[#FBF8F3] hover:bg-slate-50 text-slate-500 border-[#EBE3D5]"
+                            : "bg-[#FAF6EA] hover:bg-slate-50 text-slate-500 border-[#E3D8BF]"
                         }`}
                         title="Toggle voice note recorder"
                       >
@@ -456,12 +456,12 @@ export default function CommunityComponent({ user, onNavigateToDirectMessage }: 
                         value={newCommentContent}
                         disabled={showCommentVoice}
                         onChange={(e) => setNewCommentContent(e.target.value)}
-                        className="flex-1 px-4 py-2 bg-[#FBF8F3] border border-[#EBE3D5] rounded-xl text-slate-800 placeholder-slate-400 focus:outline-none text-xs disabled:opacity-50"
+                        className="flex-1 px-4 py-2 bg-[#FAF6EA] border border-[#E3D8BF] rounded-xl text-slate-800 placeholder-slate-400 focus:outline-none text-xs disabled:opacity-50"
                       />
                       <button
                         type="submit"
                         disabled={showCommentVoice || !newCommentContent.trim()}
-                        className="px-4 py-2 bg-[#0F4C81] text-white rounded-xl transition-colors hover:bg-[#1D70B8] flex items-center justify-center disabled:opacity-50"
+                        className="px-4 py-2 bg-[#163A2E] text-white rounded-xl transition-colors hover:bg-[#1FA396] flex items-center justify-center disabled:opacity-50"
                       >
                         <Send className="w-4.5 h-4.5" />
                       </button>
@@ -474,9 +474,9 @@ export default function CommunityComponent({ user, onNavigateToDirectMessage }: 
                   
                   {/* Create Post Card */}
                   {joinedIds.includes(selectedCommunity.id) ? (
-                    <div className="bg-[#FBF8F3] border border-[#EBE3D5] rounded-xl p-4 space-y-4">
+                    <div className="bg-[#FAF6EA] border border-[#E3D8BF] rounded-xl p-4 space-y-4">
                       <h4 className="text-xs font-bold text-slate-700 flex items-center gap-1.5">
-                        <PlusCircle className="w-4.5 h-4.5 text-[#00A896]" /> Start a Private Conversation
+                        <PlusCircle className="w-4.5 h-4.5 text-[#158A80]" /> Start a Private Conversation
                       </h4>
 
                       <form onSubmit={handleCreatePost} className="space-y-3">
@@ -485,7 +485,7 @@ export default function CommunityComponent({ user, onNavigateToDirectMessage }: 
                           placeholder="What is the topic of your thought? (e.g. Sleep anxiety during warnings)"
                           value={newPostTitle}
                           onChange={(e) => setNewPostTitle(e.target.value)}
-                          className="w-full px-4 py-2 bg-white border border-[#EBE3D5] rounded-xl text-slate-800 placeholder-slate-400 focus:outline-none text-xs"
+                          className="w-full px-4 py-2 bg-white border border-[#E3D8BF] rounded-xl text-slate-800 placeholder-slate-400 focus:outline-none text-xs"
                           required
                         />
                         
@@ -495,7 +495,7 @@ export default function CommunityComponent({ user, onNavigateToDirectMessage }: 
                             onClick={() => setShowPostVoice(false)}
                             className={`px-3 py-1 text-[10px] font-bold rounded-lg border transition-all ${
                               !showPostVoice 
-                                ? "bg-[#0F4C81] text-white border-transparent" 
+                                ? "bg-[#163A2E] text-white border-transparent" 
                                 : "bg-white text-slate-500 border-slate-200 hover:bg-slate-50"
                             }`}
                           >
@@ -506,7 +506,7 @@ export default function CommunityComponent({ user, onNavigateToDirectMessage }: 
                             onClick={() => setShowPostVoice(true)}
                             className={`px-3 py-1 text-[10px] font-bold rounded-lg border transition-all flex items-center gap-1 ${
                               showPostVoice 
-                                ? "bg-[#0F4C81] text-white border-transparent" 
+                                ? "bg-[#163A2E] text-white border-transparent" 
                                 : "bg-white text-slate-500 border-slate-200 hover:bg-slate-50"
                             }`}
                           >
@@ -515,7 +515,7 @@ export default function CommunityComponent({ user, onNavigateToDirectMessage }: 
                         </div>
 
                         {showPostVoice ? (
-                          <div className="bg-white border border-[#EBE3D5] p-3 rounded-xl">
+                          <div className="bg-white border border-[#E3D8BF] p-3 rounded-xl">
                             {newPostContent.startsWith('{"isVoiceNote":true') ? (
                               <div className="space-y-2">
                                 <span className="text-[10px] text-emerald-600 font-bold flex items-center gap-1">
@@ -550,14 +550,14 @@ export default function CommunityComponent({ user, onNavigateToDirectMessage }: 
                             placeholder="Express yourself. Feel free to explain details. Remember, you are fully anonymous."
                             value={newPostContent.startsWith('{"isVoiceNote":true') ? "" : newPostContent}
                             onChange={(e) => setNewPostContent(e.target.value)}
-                            className="w-full px-4 py-2.5 bg-white border border-[#EBE3D5] rounded-xl text-slate-800 placeholder-slate-400 focus:outline-none text-xs"
+                            className="w-full px-4 py-2.5 bg-white border border-[#E3D8BF] rounded-xl text-slate-800 placeholder-slate-400 focus:outline-none text-xs"
                           />
                         )}
 
                         <button
                           type="submit"
                           disabled={!newPostTitle.trim() || !newPostContent.trim()}
-                          className="px-5 py-2 bg-[#0F4C81] hover:bg-[#1D70B8] text-white rounded-xl text-xs font-semibold disabled:opacity-50"
+                          className="px-5 py-2 bg-[#163A2E] hover:bg-[#1FA396] text-white rounded-xl text-xs font-semibold disabled:opacity-50"
                         >
                           Submit Anonymous Post
                         </button>
@@ -582,7 +582,7 @@ export default function CommunityComponent({ user, onNavigateToDirectMessage }: 
                         {posts.map((post) => (
                           <div
                             key={post.id}
-                            className="p-4 border border-slate-100 rounded-xl hover:border-[#00A896]/30 transition-all space-y-2 cursor-pointer bg-white"
+                            className="p-4 border border-slate-100 rounded-xl hover:border-[#158A80]/30 transition-all space-y-2 cursor-pointer bg-white"
                           >
                             <div className="flex justify-between items-center text-[10px] text-slate-400">
                               <span>By <strong>{post.anonymous_author}</strong></span>
@@ -590,7 +590,7 @@ export default function CommunityComponent({ user, onNavigateToDirectMessage }: 
                             </div>
 
                             <div onClick={() => setActivePost(post)}>
-                              <h4 className="font-semibold text-slate-800 text-xs hover:text-[#0F4C81]">{post.title}</h4>
+                              <h4 className="font-semibold text-slate-800 text-xs hover:text-[#163A2E]">{post.title}</h4>
                               <p className="text-xs text-slate-500 line-clamp-2 mt-1">
                                 {post.content.startsWith('{"isVoiceNote":true') ? "🎤 [Voice Post]" : post.content}
                               </p>
@@ -599,14 +599,14 @@ export default function CommunityComponent({ user, onNavigateToDirectMessage }: 
                             <div className="flex items-center gap-4 pt-2 border-t border-slate-50 text-[10px] text-slate-500">
                               <button
                                 onClick={() => handleLike(post.id)}
-                                className="flex items-center gap-1 hover:text-[#0F4C81]"
+                                className="flex items-center gap-1 hover:text-[#163A2E]"
                               >
                                 <ThumbsUp className="w-3.5 h-3.5" /> {post.likes_count || 0}
                               </button>
 
                               <button
                                 onClick={() => setActivePost(post)}
-                                className="flex items-center gap-1 hover:text-[#00A896]"
+                                className="flex items-center gap-1 hover:text-[#158A80]"
                               >
                                 <MessageSquare className="w-3.5 h-3.5" /> Reply to discussion
                               </button>

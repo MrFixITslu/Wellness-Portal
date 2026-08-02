@@ -367,7 +367,7 @@ export function VoiceRecorder({ onVoiceAttached, onCancel }: VoiceRecorderProps)
   };
 
   return (
-    <div className="bg-[#FCFAF7] border border-[#EBE3D5] rounded-2xl p-5 shadow-inner max-w-md mx-auto space-y-4">
+    <div className="bg-[#FDFBF3] border border-[#E3D8BF] rounded-2xl p-5 shadow-inner max-w-md mx-auto space-y-4">
       <audio ref={previewAudioRef} className="hidden" />
 
       {/* Title */}
@@ -397,7 +397,7 @@ export function VoiceRecorder({ onVoiceAttached, onCancel }: VoiceRecorderProps)
         {/* Pulsing Visualizer Ring */}
         <div className="relative flex items-center justify-center w-20 h-20">
           {recording && (
-            <div className="absolute inset-0 bg-[#00A896]/10 rounded-full animate-ping duration-1000" />
+            <div className="absolute inset-0 bg-[#158A80]/10 rounded-full animate-ping duration-1000" />
           )}
           <button
             type="button"
@@ -405,7 +405,7 @@ export function VoiceRecorder({ onVoiceAttached, onCancel }: VoiceRecorderProps)
             className={`relative z-10 w-16 h-16 rounded-full flex items-center justify-center text-white transition-all shadow-md ${
               recording 
                 ? "bg-red-500 hover:bg-red-600 ring-4 ring-red-100" 
-                : "bg-[#0F4C81] hover:bg-[#1D70B8] hover:scale-105"
+                : "bg-[#163A2E] hover:bg-[#1FA396] hover:scale-105"
             }`}
           >
             {recording ? <Square className="w-6 h-6 fill-current" /> : <Mic className="w-7 h-7" />}
@@ -414,7 +414,7 @@ export function VoiceRecorder({ onVoiceAttached, onCancel }: VoiceRecorderProps)
 
         {/* Counter & Status */}
         <div className="text-center">
-          <span className="font-mono text-xl font-extrabold text-[#0F4C81]">
+          <span className="font-mono text-xl font-extrabold text-[#163A2E]">
             {formatTime(duration)}
           </span>
           <p className="text-[11px] text-slate-500 mt-1">
@@ -425,7 +425,7 @@ export function VoiceRecorder({ onVoiceAttached, onCancel }: VoiceRecorderProps)
 
       {/* Voice Modifiers Selector Panel */}
       {originalAudioBlob && (
-        <div className="space-y-3 bg-white border border-[#EBE3D5] p-3.5 rounded-xl">
+        <div className="space-y-3 bg-white border border-[#E3D8BF] p-3.5 rounded-xl">
           <div className="flex items-center justify-between">
             <span className="text-[10px] font-bold text-slate-700 uppercase tracking-wider flex items-center gap-1">
               <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" /> Select Privacy Shield (Voice Modifier)
@@ -444,8 +444,8 @@ export function VoiceRecorder({ onVoiceAttached, onCancel }: VoiceRecorderProps)
                   onClick={() => setActivePreset(preset.id)}
                   className={`p-2 rounded-xl flex flex-col items-center text-center transition-all border ${
                     isSelected
-                      ? "bg-[#0F4C81] text-white border-transparent shadow-sm"
-                      : "bg-[#FCFAF7] hover:bg-slate-50 text-slate-600 border-slate-100"
+                      ? "bg-[#163A2E] text-white border-transparent shadow-sm"
+                      : "bg-[#FDFBF3] hover:bg-slate-50 text-slate-600 border-slate-100"
                   }`}
                 >
                   <PresetIcon className={`w-4 h-4 mb-1 ${isSelected ? "text-teal-200" : "text-slate-500"}`} />
@@ -471,7 +471,7 @@ export function VoiceRecorder({ onVoiceAttached, onCancel }: VoiceRecorderProps)
               type="button"
               onClick={togglePreviewPlay}
               disabled={renderingPreset || !previewingBlob}
-              className="px-3 py-1.5 bg-[#00A896] hover:bg-[#02C39A] text-white text-[10px] font-bold rounded-lg flex items-center gap-1 transition-colors disabled:opacity-50"
+              className="px-3 py-1.5 bg-[#158A80] hover:bg-[#1FA396] text-white text-[10px] font-bold rounded-lg flex items-center gap-1 transition-colors disabled:opacity-50"
             >
               {previewPlaying ? <Pause className="w-3 h-3" /> : <Play className="w-3 h-3" />}
               {previewPlaying ? "Pause Preview" : "Play Processed Preview"}
@@ -504,7 +504,7 @@ export function VoiceRecorder({ onVoiceAttached, onCancel }: VoiceRecorderProps)
             type="button"
             onClick={handleSubmit}
             disabled={renderingPreset || !previewingBlob}
-            className="flex-1 py-2 bg-[#0F4C81] hover:bg-[#1D70B8] text-white rounded-xl text-xs font-semibold shadow-sm transition-colors flex items-center justify-center gap-1.5 disabled:opacity-50"
+            className="flex-1 py-2 bg-[#163A2E] hover:bg-[#1FA396] text-white rounded-xl text-xs font-semibold shadow-sm transition-colors flex items-center justify-center gap-1.5 disabled:opacity-50"
           >
             Confirm & Attach Note
           </button>
@@ -578,7 +578,7 @@ export function VoiceNotePlayer({ src, duration, modifier }: VoiceNotePlayerProp
   const progressPercent = duration > 0 ? (currentTime / duration) * 100 : 0;
 
   return (
-    <div className="flex flex-col gap-1.5 p-3.5 bg-white border border-[#EBE3D5] rounded-xl shadow-xs max-w-xs min-w-[200px]">
+    <div className="flex flex-col gap-1.5 p-3.5 bg-white border border-[#E3D8BF] rounded-xl shadow-xs max-w-xs min-w-[200px]">
       <audio ref={audioRef} src={src} className="hidden" />
       
       {/* Waveform Visualization & Play Button Row */}
@@ -586,7 +586,7 @@ export function VoiceNotePlayer({ src, duration, modifier }: VoiceNotePlayerProp
         {/* Rounded Play Button */}
         <button
           onClick={handlePlayPause}
-          className="w-8 h-8 rounded-full bg-[#0F4C81] hover:bg-[#1D70B8] text-white flex items-center justify-center transition-transform hover:scale-105"
+          className="w-8 h-8 rounded-full bg-[#163A2E] hover:bg-[#1FA396] text-white flex items-center justify-center transition-transform hover:scale-105"
           title={playing ? "Pause" : "Play Voice Note"}
         >
           {playing ? <Pause className="w-4 h-4 fill-current" /> : <Play className="w-4 h-4 fill-current ml-0.5" />}
@@ -604,7 +604,7 @@ export function VoiceNotePlayer({ src, duration, modifier }: VoiceNotePlayerProp
                 style={{ height: `${height}%` }}
                 className={`w-0.75 rounded-full transition-colors duration-200 ${
                   isActive 
-                    ? "bg-[#0F4C81]" 
+                    ? "bg-[#163A2E]" 
                     : "bg-slate-200"
                 }`}
               />

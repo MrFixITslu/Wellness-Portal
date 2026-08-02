@@ -111,10 +111,10 @@ I am here 24/7 to listen to your stress, anxiety, sleep issues, or relationship 
     <div id="ai-companion-container" className="space-y-6 max-w-4xl mx-auto flex flex-col h-[550px]">
       
       {/* Upper header */}
-      <div className="flex justify-between items-center bg-white border border-[#EBE3D5] p-4 rounded-2xl shadow-sm shrink-0">
+      <div className="flex justify-between items-center bg-white border border-[#E3D8BF] p-4 rounded-2xl shadow-sm shrink-0">
         <div className="space-y-0.5">
           <h2 className="text-sm font-semibold text-slate-800 flex items-center gap-1.5">
-            <Compass className="w-5 h-5 text-[#00A896]" /> Ask Saman AI
+            <Compass className="w-5 h-5 text-[#158A80]" /> Ask Saman AI
           </h2>
           <p className="text-[10px] text-slate-400">Personalized Emotional Reflection & Safety Classification Pipeline Active</p>
         </div>
@@ -129,7 +129,7 @@ I am here 24/7 to listen to your stress, anxiety, sleep issues, or relationship 
       </div>
 
       {/* Main chat window container */}
-      <div className="flex-1 bg-white border border-[#EBE3D5] rounded-2xl p-4 overflow-y-auto space-y-4 shadow-sm relative flex flex-col">
+      <div className="flex-1 bg-white border border-[#E3D8BF] rounded-2xl p-4 overflow-y-auto space-y-4 shadow-sm relative flex flex-col">
         
         {/* Messages feed */}
         <div className="flex-1 space-y-4">
@@ -142,7 +142,7 @@ I am here 24/7 to listen to your stress, anxiety, sleep issues, or relationship 
               >
                 {/* Avatar Icon */}
                 <div className={`w-8 h-8 rounded-full shrink-0 flex items-center justify-center text-sm font-bold ${
-                  isUser ? "bg-[#0F4C81] text-white" : m.isCrisis ? "bg-red-50 text-red-600 border border-red-200" : "bg-teal-50 text-[#00A896]"
+                  isUser ? "bg-[#163A2E] text-white" : m.isCrisis ? "bg-red-50 text-red-600 border border-red-200" : "bg-teal-50 text-[#158A80]"
                 }`}>
                   {isUser ? "👤" : m.isCrisis ? "🚨" : "🧭"}
                 </div>
@@ -151,7 +151,7 @@ I am here 24/7 to listen to your stress, anxiety, sleep issues, or relationship 
                 <div className="space-y-1">
                   <div className={`p-3.5 rounded-2xl text-xs leading-relaxed whitespace-pre-wrap ${
                     isUser
-                      ? "bg-[#0F4C81] text-white rounded-tr-none"
+                      ? "bg-[#163A2E] text-white rounded-tr-none"
                       : m.isCrisis
                       ? "bg-red-50 border border-red-150 text-slate-800 rounded-tl-none font-medium"
                       : "bg-slate-50 text-slate-800 border border-slate-100 rounded-tl-none"
@@ -165,7 +165,7 @@ I am here 24/7 to listen to your stress, anxiety, sleep issues, or relationship 
 
           {loading && (
             <div className="flex gap-3 mr-auto max-w-[80%]">
-              <div className="w-8 h-8 rounded-full bg-teal-50 text-[#00A896] flex items-center justify-center text-xs animate-pulse">
+              <div className="w-8 h-8 rounded-full bg-teal-50 text-[#158A80] flex items-center justify-center text-xs animate-pulse">
                 🧭
               </div>
               <div className="p-3 bg-slate-50 border border-slate-100 text-slate-400 text-xs rounded-2xl rounded-tl-none flex items-center gap-1">
@@ -202,7 +202,7 @@ I am here 24/7 to listen to your stress, anxiety, sleep issues, or relationship 
       </div>
 
       {/* Input Form Box */}
-      <form onSubmit={handleSend} className="bg-white border border-[#EBE3D5] p-3 rounded-2xl shadow-sm shrink-0 flex gap-2">
+      <form onSubmit={handleSend} className="bg-white border border-[#E3D8BF] p-3 rounded-2xl shadow-sm shrink-0 flex gap-2">
         <input
           id="input-ai-message"
           type="text"
@@ -210,13 +210,13 @@ I am here 24/7 to listen to your stress, anxiety, sleep issues, or relationship 
           value={inputText}
           onChange={(e) => setInputText(e.target.value)}
           disabled={loading}
-          className="flex-1 px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#00A896]/20 text-xs"
+          className="flex-1 px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#158A80]/20 text-xs"
         />
         <button
           id="btn-submit-ai-chat"
           type="submit"
           disabled={loading}
-          className="px-4 py-2 bg-[#00A896] hover:bg-[#02C39A] disabled:bg-[#00A896]/30 text-white rounded-xl text-xs font-semibold transition-colors flex items-center justify-center gap-1.5"
+          className="px-4 py-2 bg-[#158A80] hover:bg-[#1FA396] disabled:bg-[#158A80]/30 text-white rounded-xl text-xs font-semibold transition-colors flex items-center justify-center gap-1.5"
         >
           <span>Send</span>
           <Send className="w-3.5 h-3.5" />
