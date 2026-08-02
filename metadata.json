@@ -1,0 +1,8 @@
+{
+  "name": "Caribbean Digital Mental Wellness Platform",
+  "description": "A private, secure, and therapeutic full-stack mental wellness application customized for Caribbean communities, featuring anonymous tracking, community support, AI wellness reflection, therapist networks, and emergency crisis intervention.",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
